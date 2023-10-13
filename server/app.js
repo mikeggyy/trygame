@@ -10,18 +10,25 @@ const generateBodyguards = require('./generateBodyguards.js');
 const generateIntroducer = require('./generateIntroducer.js');
 const generateShipMan = require('./generateShipMan.js');
 
-app.get("/api/generateAllData", (req, res) => {
-  const laborerCount = req.query.laborerCount || 0;
-  const bodyguardsCount = req.query.bodyguardsCount || 0;
-  const shipManCount = req.query.shipManCount || 0;
+app.get("/api/generateAllData", async (req, res) => {
+  try {
+    const laborerCount = req.query.laborerCount || 0;
+    const bodyguardsCount = req.query.bodyguardsCount || 0;
+    const shipManCount = req.query.shipManCount || 0;
 
-  const introducers = generateIntroducer();
-  const laborers = generateLaborer(laborerCount);
-  const bodyguards = generateBodyguards(bodyguardsCount);
-  const shipMan = generateShipMan(shipManCount);
-  const allData = [...introducers, ...laborers, ...bodyguards, ...shipMan];
-  res.json(allData);
+    const introducers = await generateIntroducer();
+    const laborers = await generateLaborer(laborerCount);
+    const bodyguards = await generateBodyguards(bodyguardsCount);
+    const shipMan = await generateShipMan(shipManCount);
+
+    const allData = [...introducers, ...laborers, ...bodyguards, ...shipMan];
+    res.json(allData);
+  } catch (err) {
+    // 處理錯誤
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 });
+
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
