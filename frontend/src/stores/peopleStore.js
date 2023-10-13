@@ -11,11 +11,11 @@ export const people = defineStore({
   actions: {
     // 創建雜工
     getPeopleList(laborerCount, bodyguardsCount, shipManCount) {
-      axios.get('http://localhost:3000/api/generateAllData', {
+      axios.get(import.meta.env.VITE_APP_BASE_URL + '/api/generateAllData', {
         params: {
           laborerCount: laborerCount,
           bodyguardsCount: bodyguardsCount,
-          shipManCount: shipManCount
+          shipManCount: shipManCount,
         }
       }).then((response) => {
         this.peopleList = response.data;

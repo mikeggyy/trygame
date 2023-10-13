@@ -1,15 +1,20 @@
 <script setup>
 import TitleForPopup from '@/components/popup/TitleForPopup.vue';
 import SelectForPopup from '@/components/popup/SelectForPopup.vue'
-import { popupState, people } from '@/stores';
+import { config, popupState, people } from '@/stores';
 import { ref } from 'vue';
-const newPeopleList = ref([])
+const peopleData = ref([])
 // 在 setup 函數中進行初始化操作
 const populateNewPeopleList = () => {
-  newPeopleList.value = people().peopleList.filter(item => (item.type === popupState().hireStatus && item.age > 15));
+  peopleData.value = people().peopleList.filter(item => (item.type === popupState().hireStatus && item.age > 15));
 }
 const handleCancel = () => {
   popupState().setHireStatus('')
+}
+const handleOk = (item) => {
+  popupState().setHireStatus('')
+  config().setSelectTarget(item)
+  console.log(item);
 }
 // 初始化時調用
 populateNewPeopleList();
@@ -18,7 +23,7 @@ populateNewPeopleList();
   <div class="Hire">
     <div class="container">
       <TitleForPopup :name="`雇用${popupState().hireStatus}`" :showCloseBtn="false" />
-      <SelectForPopup :dataList="newPeopleList" @ok="handleOk" @cancel="handleCancel" />
+      <SelectForPopup :dataList="peopleData" @ok="handleOk" @cancel="handleCancel" />
     </div>
   </div>
 </template>

@@ -51,7 +51,9 @@ export const config = defineStore({
     // 遊戲進行中嗎
     isGameStart: false,
     // 是否日期正在移動中
-    isTimeStart: false
+    isTimeStart: false,
+    // 目前選中的項目
+    selectTarget: null
   }),
   actions: {
     setName(name) {
@@ -96,6 +98,9 @@ export const config = defineStore({
     },
     setSalesList(data) {
       this.salesList = data
+    },
+    setSelectTarget(item) {
+      this.selectTarget = item
     }
   },
 });
