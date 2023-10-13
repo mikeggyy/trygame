@@ -2,11 +2,11 @@
 import { people, popupState, config } from '@/stores';
 import TitleForPopup from '@/components/popup/TitleForPopup.vue';
 import InputForPopup from '@/components/popup/InputForPopup.vue';
-const handleOk = async (name) => {
+const handleOk = (name) => {
   config().setName(name.value)
   popupState().setChangeName(false)
-  //todo
-  await people().createLaborer(10)
+
+  people().getPeopleList(50, 50, 50)
   // await people().createBodyguards(30)
   config().setGameStart()
 }

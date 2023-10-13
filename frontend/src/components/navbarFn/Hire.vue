@@ -6,7 +6,7 @@ import { ref } from 'vue';
 const newPeopleList = ref([])
 // 在 setup 函數中進行初始化操作
 const populateNewPeopleList = () => {
-  newPeopleList.value = people().peopleList.filter(item => item.profession === popupState().hireStatus);
+  newPeopleList.value = people().peopleList.filter(item => (item.type === popupState().hireStatus && item.age > 15));
 }
 const handleCancel = () => {
   popupState().setHireStatus('')
