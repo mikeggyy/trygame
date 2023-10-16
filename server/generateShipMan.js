@@ -2,7 +2,7 @@
 const express = require("express");
 const app = express();
 app.use(express.json());
-const adjectives = [
+const surnames = [
   '不可阻擋的', '不撓的', '無懈可擊的', '不死之身的', '勇往直前的', '無情的', '冷酷的', '無比強大的',
   '剛毅的', '韌性的', '不知疲倦的', '鋼鐵般的', '堅定不移的', '毫不妥協的', '不退縮的', '不可壓倒的',
   '無畏無懼的', '堅定如磐的', '不可動搖的', '不可戰勝的', '堅忍不拔的', '不可撼動的', '鮫殺的', '無所畏懼的',
@@ -27,27 +27,12 @@ const warriorNames = [
   '銀次', '翔太'
 ];
 
-const usedAdjectives = [];
-const usedWarriorNames = [];
 const getRandomName = () => {
-  let adjective = '';
-  let warriorName = '';
-
-  // 選擇未使用過的形容詞
-  do {
-    adjective = adjectives[Math.floor(Math.random() * adjectives.length)];
-  } while (usedAdjectives.includes(adjective));
-
-  // 選擇未使用過的武士名字
-  do {
-    warriorName = warriorNames[Math.floor(Math.random() * warriorNames.length)];
-  } while (usedWarriorNames.includes(warriorName));
-
-  // 將使用過的形容詞和武士名字加入已使用陣列中
-  usedAdjectives.push(adjective);
-  usedWarriorNames.push(warriorName);
-
-  return `${adjective}${warriorName}`;
+  const randomSurnameIndex = Math.floor(Math.random() * surnames.length);
+  const randomWarriorNameIndex = Math.floor(Math.random() * warriorNames.length);
+  const surname = surnames[randomSurnameIndex];
+  const warriorName = warriorNames[randomWarriorNameIndex];
+  return `${surname}${warriorName}`;
 };
 
 const generateShipMan = (count) => {

@@ -5,9 +5,8 @@ import InputForPopup from '@/components/popup/InputForPopup.vue';
 const handleOk = (name) => {
   config().setName(name.value)
   popupState().setChangeName(false)
-
-  people().getPeopleList(50, 50, 50)
-  // await people().createBodyguards(30)
+  // 創造人物
+  people().getPeopleList()
   config().setGameStart()
 }
 </script>

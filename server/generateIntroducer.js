@@ -14,7 +14,7 @@ const generateIntroducer = () => {
       impression: 50,
       smuggling: false,
       limit: '',
-      headImg: '',
+      headImg: 'introducer-001.jpg',
       type: '介紹人',
       profession: '退休',
       description: ''
@@ -28,7 +28,7 @@ const generateIntroducer = () => {
       impression: 50,
       smuggling: false,
       limit: '',
-      headImg: '',
+      headImg: 'introducer-001.jpg',
       type: '介紹人',
       profession: '米店',
       description: ''
@@ -42,7 +42,7 @@ const generateIntroducer = () => {
       impression: 50,
       smuggling: false,
       limit: '',
-      headImg: '',
+      headImg: 'introducer-001.jpg',
       type: '介紹人',
       profession: '醫生',
       description: ''
@@ -56,7 +56,7 @@ const generateIntroducer = () => {
       impression: 50,
       smuggling: true,
       limit: '',
-      headImg: '',
+      headImg: 'introducer-001.jpg',
       type: '介紹人',
       profession: '僧侶',
       description: ''
@@ -70,7 +70,7 @@ const generateIntroducer = () => {
       impression: 50,
       smuggling: true,
       limit: '',
-      headImg: '',
+      headImg: 'introducer-001.jpg',
       type: '介紹人',
       profession: '御前仕從',
       description: ''
