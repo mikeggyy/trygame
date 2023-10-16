@@ -48,10 +48,10 @@ function generateLaborer(count) {
       impression: 50,
       smuggling: randomSmuggling,
       limit: '',
-      headImg: '',
+      headImg: 'laborer-001.png',
       type: '雜工',
       profession: '雜工',
-      description: ''
+      description: '沒沒無聞的雜工'
     };
 
     peopleList.push(body);

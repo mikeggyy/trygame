@@ -38,10 +38,10 @@ const subItemHandle = (item) => {
 const subItemHandle2 = (item) => {
   activeIndex.value = null;
   switch (item.fn) {
-    case 'work':
+    case '工作':
       toWork(item.value)
       break;
-    case 'hire':
+    case '雇用員工':
       toHire(item.name)
       break;
     case '新遊戲':

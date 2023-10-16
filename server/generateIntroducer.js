@@ -8,29 +8,29 @@ const generateIntroducer = () => {
     {
       id: 1,
       name: '隱居的光兵衛',
-      age: 40,
+      age: 54,
       ability: 69,
       pay: 16,
       impression: 50,
       smuggling: false,
       limit: '',
-      headImg: 'introducer-001.jpg',
+      headImg: 'introducer-001.png',
       type: '介紹人',
-      profession: '退休',
-      description: ''
+      profession: '隱居',
+      description: '光兵衛是一位非常慈悲和寬容的人。傳聞他過去無私的幫助陷入困境的人們，不求回報。'
     },
     {
       id: 2,
-      name: '米屋的雲八',
+      name: '谷中的傳八',
       age: 48,
       ability: 86,
       pay: 24,
       impression: 50,
       smuggling: false,
       limit: '',
-      headImg: 'introducer-001.jpg',
+      headImg: 'introducer-002.png',
       type: '介紹人',
-      profession: '米店',
+      profession: '文化人',
       description: ''
     },
     {
@@ -42,7 +42,7 @@ const generateIntroducer = () => {
       impression: 50,
       smuggling: false,
       limit: '',
-      headImg: 'introducer-001.jpg',
+      headImg: 'introducer-001.png',
       type: '介紹人',
       profession: '醫生',
       description: ''
@@ -56,7 +56,7 @@ const generateIntroducer = () => {
       impression: 50,
       smuggling: true,
       limit: '',
-      headImg: 'introducer-001.jpg',
+      headImg: 'introducer-004.png',
       type: '介紹人',
       profession: '僧侶',
       description: ''
@@ -70,7 +70,7 @@ const generateIntroducer = () => {
       impression: 50,
       smuggling: true,
       limit: '',
-      headImg: 'introducer-001.jpg',
+      headImg: 'introducer-001.png',
       type: '介紹人',
       profession: '御前仕從',
       description: ''

@@ -53,10 +53,10 @@ const generateBodyguards = (count) => {
       impression: 50,
       smuggling: randomSmuggling,
       limit: '',
-      headImg: '',
+      headImg: 'bodyguards-001.png',
       type: '保鑣',
       profession: '保鑣',
-      description: '',
+      description: '沒落的武士',
     };
 
     peopleList.push(body);

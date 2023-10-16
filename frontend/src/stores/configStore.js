@@ -1,3 +1,4 @@
+import { computed } from 'vue';
 import { defineStore } from 'pinia'
 
 //設定檔
@@ -8,12 +9,6 @@ export const config = defineStore({
     age: 20,
     // 創業幾年
     afterYears: 0,
-    // 家族人數
-    familySize: 0,
-    // 佣人數量
-    maidSize: 0,
-    // 保鑣人數
-    bodyguardSize: 0,
     // 倉庫數量
     warehouseSize: 1,
     // 船隻數量
@@ -52,9 +47,27 @@ export const config = defineStore({
     isGameStart: false,
     // 是否日期正在移動中
     isTimeStart: false,
-    // 目前選中的項目
-    selectTarget: null
+    // 員工總數
+    allEmployees: []
   }),
+  getters: {
+    // 家族人數
+    familySize(state) {
+      return state.allEmployees.filter(employee => employee.type === '家人').length;
+    },
+    // 佣人數量
+    laborerSize(state) {
+      return state.allEmployees.filter(employee => employee.type === '雜工').length;
+    },
+    // 保鑣人數
+    bodyguardSize(state) {
+      return state.allEmployees.filter(employee => employee.type === '保鑣').length;
+    },
+    // 船長數量
+    shipManSzie(state) {
+      return state.allEmployees.filter(employee => employee.type === '船長').length;
+    },
+  },
   actions: {
     setName(name) {
       this.name = name;
@@ -99,8 +112,9 @@ export const config = defineStore({
     setSalesList(data) {
       this.salesList = data
     },
-    setSelectTarget(item) {
-      this.selectTarget = item
+    setEmployees(item) {
+      this.allEmployees.push(item)
     }
   },
+
 });

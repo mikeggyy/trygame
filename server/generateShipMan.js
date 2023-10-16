@@ -61,10 +61,10 @@ const generateShipMan = (count) => {
       impression: 50,
       smuggling: randomSmuggling,
       limit: '',
-      headImg: '',
+      headImg: 'shipMan-001.png',
       type: '船長',
       profession: '船長',
-      description: '',
+      description: '沒沒無聞的船長',
     };
 
     peopleList.push(body);

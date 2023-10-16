@@ -8,5 +8,7 @@ import { popupState } from './popupStateStore';
 import { product } from './productStore';
 import { people } from './peopleStore';
 import { port } from './portStore';
+import { select } from './selectStore';
+import { talking } from './talkingStore';
 
-export { config, navBar, profession, popupState, product, people, port };
+export { config, navBar, profession, popupState, product, people, port, select, talking };

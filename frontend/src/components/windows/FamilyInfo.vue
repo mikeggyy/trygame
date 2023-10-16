@@ -39,11 +39,15 @@ import TitleForPopup from '@/components/popup/TitleForPopup.vue';
         </div>
         <div>
           <span>佣人</span>
-          <span>{{ config().maidSize }}人</span>
+          <span>{{ config().laborerSize }}人</span>
         </div>
         <div>
           <span>保鑣</span>
           <span>{{ config().bodyguardSize }}人</span>
+        </div>
+        <div>
+          <span>船長</span>
+          <span>{{ config().shipManSzie }}人</span>
         </div>
         <div>
           <span>倉庫數</span>
