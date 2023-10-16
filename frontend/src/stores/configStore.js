@@ -48,7 +48,15 @@ export const config = defineStore({
     // 是否日期正在移動中
     isTimeStart: false,
     // 員工總數
-    allEmployees: []
+    allEmployees: [],
+    // 介紹人限制
+    introducerLimit:1,
+    // 雜工限制
+    laborerLimit:30,
+    // 保鑣限制
+    bodyguardLimit:30,
+    // 船長限制
+    shipManLimit:30,
   }),
   getters: {
     // 家族人數

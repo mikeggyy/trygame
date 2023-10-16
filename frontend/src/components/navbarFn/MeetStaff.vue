@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import { popupState, config } from '@/stores'
+import { popupState, config,talking,select } from '@/stores'
 import TalkForPopup from '@/components/popup/TalkForPopup.vue';
 import TitleForPopup from '@/components/popup/TitleForPopup.vue';
 import SelectForPopup from '@/components/popup/SelectForPopup.vue'
@@ -8,19 +8,32 @@ import DescriptionForPopup from '@/components/popup/DescriptionForPopup.vue'
 const isOpen = ref(true)
 const meetList = ref([])
 const meetItem = ref({})
+const isMeetCheck = ref(false)
 // 檢查是否有該類型人員
 if (config().allEmployees.some((item) => item.type == popupState().meetStaffType)) {
   meetList.value = config().allEmployees.filter(employee => employee.type == popupState().meetStaffType)
+  if(meetList.value.length ==1){
+    meetItem.value = meetList.value[0]
+  }
 } else {
   isOpen.value = false
 }
 const handleMeetOk = (item) => {
-  isHireCheck.value = true
-  //todo
+  isMeetCheck.value = true
   meetItem.value = item
 }
 const handleMeetCancel = () => {
   popupState().setMeetStaffType('')
+}
+const handleChoiceOk = ()=>{
+
+}
+const handleChoiceCancel = () =>{
+  if(meetList.value.length == 1){
+    popupState().meetStaffType = ''
+  }else{
+    isMeetCheck.value = false
+  }
 }
 </script>
 <template>
@@ -30,12 +43,16 @@ const handleMeetCancel = () => {
         @cancel="popupState().setMeetStaffType('')" />
     </div>
     <div v-else>
-      <div v-if="meetList.length > 1" class="selectMeet">
+      <div v-if="meetList.length > 1 && isMeetCheck != true" class="selectMeet">
         <TitleForPopup :name="`傳喚${popupState().meetStaffType}`" />
         <SelectForPopup :dataList="meetList" @ok="handleMeetOk" @cancel="handleMeetCancel" />
       </div>
-      <div v-else-if="meetList.length == 1" class="">
-        <TalkForPopup :peopleItem="meetItem" :talking="'content'" />
+      <div v-if="meetList.length == 1 || isMeetCheck == true" class="">
+        <TalkForPopup :peopleItem="meetItem" :talking="talking().getMeetStaffTalking()" />
+        <div class="zone__check">
+          <TitleForPopup :name="`雇用${popupState().hireType}`" :showCloseBtn="false" />
+          <SelectForPopup :dataList="select().meetSelect" @ok="handleChoiceOk" @cancel="handleChoiceCancel" />
+        </div>
       </div>
     </div>
   </div>
@@ -62,6 +79,14 @@ const handleMeetCancel = () => {
     margin: auto;
     background-color: #fff;
     padding: 2px;
+  }
+  .zone__check {
+    position: absolute;
+    top: 80px;
+    left: 500px;
+    background-color: #fff;
+    width: 280px;
+    height: 160px;
   }
 }
 </style>

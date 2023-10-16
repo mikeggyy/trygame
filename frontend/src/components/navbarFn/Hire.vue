@@ -17,22 +17,22 @@ const isLimit = ref(false)
 const checkEmployeesLimit = () => {
   switch (popupState().hireType) {
     case '介紹人':
-      if (config().allEmployees.every(employee => employee.type == '介紹人') && config().allEmployees.length >= 1) {
+      if (config().allEmployees.filter(item => item.type == '介紹人').length >=config().introducerLimit) {
         isLimit.value = true
       }
       break;
     case '雜工':
-      if (config().allEmployees.every(employee => employee.type == '雜工') && config().allEmployees.length >= 30) {
+      if (config().allEmployees.filter(item => item.type == '雜工').length >=config().laborerLimit) {
         isLimit.value = true
       }
       break;
     case '保鑣':
-      if (config().allEmployees.every(employee => employee.type == '保鑣') && config().allEmployees.length >= 10) {
+      if (config().allEmployees.filter(item => item.type == '保鑣').length >=config().bodyguardLimit) {
         isLimit.value = true
       }
       break;
     case '船長':
-      if (config().allEmployees.every(employee => employee.type == '船長') && config().allEmployees.length >= 10) {
+      if (config().allEmployees.filter(item => item.type == '保鑣').length >=config().shipManLimit) {
         isLimit.value = true
       }
       break;
