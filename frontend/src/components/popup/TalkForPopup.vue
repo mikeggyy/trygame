@@ -1,4 +1,5 @@
 <script setup>
+// import TalkForPopup from '@/components/popup/TalkForPopup.vue';
 const { peopleItem, content } = defineProps({
   peopleItem: {
     type: Object, // 定义 prop 的类型

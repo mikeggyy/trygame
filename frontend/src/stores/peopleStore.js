@@ -26,5 +26,8 @@ export const people = defineStore({
         this.peopleList = response.data;
       })
     },
+    removePeopleList(value) {
+      this.peopleList = this.peopleList.filter(person => person.name !== value);
+    },
   },
 });

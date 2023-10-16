@@ -4,6 +4,7 @@ import NavBar from '@/components/main/NavBar.vue';
 import SelectStore from '@/components/navbarFn/SelectStore.vue';
 import ChangeName from '@/components/navbarFn/ChangeName.vue';
 import Hire from '@/components/navbarFn/Hire.vue';
+import MeetStaff from '@/components/navbarFn/MeetStaff.vue';
 import Scenes from '@/components/windows/Scenes.vue';
 import FamilyInfo from '@/components/windows/FamilyInfo.vue'
 import SalesInfo from '@/components/windows/SalesInfo.vue'
@@ -34,10 +35,13 @@ import { ref } from 'vue';
         <ChangeName />
       </div>
       <!-- 招募員工 -->
-      <div v-if="popupState().hireStatus != ''">
+      <div v-if="popupState().hireType != ''">
         <Hire />
       </div>
-
+      <!-- 傳喚視窗 -->
+      <div v-if="popupState().meetStaffType != ''">
+        <MeetStaff />
+      </div>
     </div>
   </div>
 </template>

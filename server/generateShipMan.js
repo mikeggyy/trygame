@@ -50,7 +50,7 @@ const generateShipMan = (count) => {
 
     const randomAge = Math.floor(Math.random() * 30) + 9;
     const randomAbility = Math.floor(Math.random() * 81) + 20;
-    const randomPay = Math.floor(Math.random() * 9) + 4;
+    const randomPay = Math.floor(Math.random() * 15) + 30;
     const randomSmuggling = Math.random() > 0.9;
     const body = {
       id: i + 1,

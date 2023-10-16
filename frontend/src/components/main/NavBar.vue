@@ -22,16 +22,18 @@ const clearSubIndex = (index) => {
 
 const subItemHandle = (item) => {
   activeIndex.value = null;
-  switch (item.name) {
+  switch (item.fn) {
     case '儲存進度':
       break;
     case '讀取進度':
       break;
     case '新遊戲':
-      // todo
       popupState().closeAllPopups()
       config().resetGameStart()
       popupState().setNewGame(true)
+      break;
+    case '傳喚':
+      popupState().setMeetStaffType(item.name)
       break;
   }
 }
