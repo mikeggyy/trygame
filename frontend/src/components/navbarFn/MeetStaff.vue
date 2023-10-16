@@ -7,10 +7,20 @@ import SelectForPopup from '@/components/popup/SelectForPopup.vue'
 import DescriptionForPopup from '@/components/popup/DescriptionForPopup.vue'
 const isOpen = ref(true)
 const meetList = ref([])
+const meetItem = ref({})
+// 檢查是否有該類型人員
 if (config().allEmployees.some((item) => item.type == popupState().meetStaffType)) {
   meetList.value = config().allEmployees.filter(employee => employee.type == popupState().meetStaffType)
 } else {
   isOpen.value = false
+}
+const handleMeetOk = (item) => {
+  isHireCheck.value = true
+  //todo
+  meetItem.value = item
+}
+const handleMeetCancel = () => {
+  popupState().setMeetStaffType('')
 }
 </script>
 <template>
@@ -20,9 +30,12 @@ if (config().allEmployees.some((item) => item.type == popupState().meetStaffType
         @cancel="popupState().setMeetStaffType('')" />
     </div>
     <div v-else>
-      <div class="selectMeet">
+      <div v-if="meetList.length > 1" class="selectMeet">
         <TitleForPopup :name="`傳喚${popupState().meetStaffType}`" />
-        <SelectForPopup :dataList="meetList" />
+        <SelectForPopup :dataList="meetList" @ok="handleMeetOk" @cancel="handleMeetCancel" />
+      </div>
+      <div v-else-if="meetList.length == 1" class="">
+        <TalkForPopup :peopleItem="meetItem" :talking="'content'" />
       </div>
     </div>
   </div>
