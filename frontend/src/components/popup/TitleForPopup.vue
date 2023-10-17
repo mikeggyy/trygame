@@ -1,4 +1,6 @@
 <script setup>
+// import TitleForPopup from '@/components/popup/TitleForPopup.vue';
+const emits = defineEmits();
 const { name, showCloseBtn } = defineProps({
   name: {
     type: String, // 定义 prop 的类型
@@ -13,7 +15,7 @@ const { name, showCloseBtn } = defineProps({
 <template>
   <div class="PopupTitle">
     <div>{{ name }}</div>
-    <div v-if="showCloseBtn == true" class="close"><img src="../../assets/images/icon/close.png" alt=""></div>
+    <div v-if="showCloseBtn == true" class="close" @click="emits('close')"><img src="../../assets/images/icon/close.png" alt=""></div>
   </div>
 </template>
 

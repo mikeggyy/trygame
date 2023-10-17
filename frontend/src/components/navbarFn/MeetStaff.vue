@@ -5,11 +5,13 @@ import TalkForPopup from '@/components/popup/TalkForPopup.vue';
 import TitleForPopup from '@/components/popup/TitleForPopup.vue';
 import SelectForPopup from '@/components/popup/SelectForPopup.vue'
 import DescriptionForPopup from '@/components/popup/DescriptionForPopup.vue'
+import ChoiceMoney from '@/components/popup/ChoiceMoney.vue'
 const isOpen = ref(true)
 const meetList = ref([])
 const meetItem = ref({})
 const isMeetCheck = ref(false)
 const filterSelectList = ref([])
+const isShowChoiceMoney = ref(false)
 filterSelectList.value = select().meetSelect.filter(item => item.limit == popupState().meetStaffType || item.limit == null)
 
 // 檢查是否有該類型人員
@@ -28,8 +30,39 @@ const handleMeetOk = (item) => {
 const handleMeetCancel = () => {
   popupState().setMeetStaffType('')
 }
-const handleChoiceOk = ()=>{
-
+const handleChoiceOk = (item)=>{
+  switch (item.value) {
+    case '升大掌櫃':
+      console.log();
+      break;
+    case '升掌櫃':
+      console.log();
+      break;
+    case '讓他出海':
+      console.log();
+      break;
+    case '幫忙走私':
+      console.log();
+      break;
+    case '暗殺競爭對手':
+      console.log();
+      break;
+    case '販賣走私':
+      console.log();
+      break;
+    case '給小費':
+      isShowChoiceMoney.value = true
+      break;
+    case '加薪':
+      console.log();
+      break;
+    case '讓他去旅行':
+      console.log();
+      break;
+    case '解雇':
+      console.log();
+      break;
+  }
 }
 const handleChoiceCancel = () =>{
   if(meetList.value.length == 1){
@@ -37,6 +70,13 @@ const handleChoiceCancel = () =>{
   }else{
     isMeetCheck.value = false
   }
+}
+const handleDecideMoney= (num) =>{
+  console.log(num);
+  isShowChoiceMoney.value = false
+}
+const handleCloseDecideMoney = () =>{
+  isShowChoiceMoney.value = false
 }
 </script>
 <template>
@@ -53,9 +93,12 @@ const handleChoiceCancel = () =>{
       <div v-if="meetList.length == 1 || isMeetCheck == true" class="">
         <TalkForPopup :peopleItem="meetItem" :talking="talking().getMeetStaffTalking()" />
         <div class="zone__check">
-          <TitleForPopup :name="`雇用${popupState().hireType}`" :showCloseBtn="false" />
+          <TitleForPopup :name="`傳喚${popupState().hireType}`" :showCloseBtn="false" />
           <SelectForPopup :dataList="filterSelectList" @ok="handleChoiceOk" @cancel="handleChoiceCancel" />
         </div>
+      </div>
+      <div v-if="isShowChoiceMoney == true">
+        <ChoiceMoney @decideMoney="handleDecideMoney" @close="handleCloseDecideMoney"/>
       </div>
     </div>
   </div>

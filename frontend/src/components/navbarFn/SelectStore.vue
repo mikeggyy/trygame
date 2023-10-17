@@ -13,11 +13,14 @@ const handleOk = (data) => {
   popupState().setNewGame(false)
   popupState().setChangeName(true)
 }
+const handleClose = () =>{
+  popupState().setNewGame(false)
+}
 </script>
 
 <template>
   <div class="SelectStore">
-    <TitleForPopup :name="`選擇要創業的店舖`" />
+    <TitleForPopup :name="`選擇要創業的店舖`" @close="handleClose" />
     <SelectForPopup :dataList="professionList" @ok="handleOk" @cancel="handleCancel" />
   </div>
 </template>
