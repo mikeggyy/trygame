@@ -9,6 +9,9 @@ const isOpen = ref(true)
 const meetList = ref([])
 const meetItem = ref({})
 const isMeetCheck = ref(false)
+const filterSelectList = ref([])
+filterSelectList.value = select().meetSelect.filter(item => item.limit == popupState().meetStaffType || item.limit == null)
+
 // 檢查是否有該類型人員
 if (config().allEmployees.some((item) => item.type == popupState().meetStaffType)) {
   meetList.value = config().allEmployees.filter(employee => employee.type == popupState().meetStaffType)
@@ -51,7 +54,7 @@ const handleChoiceCancel = () =>{
         <TalkForPopup :peopleItem="meetItem" :talking="talking().getMeetStaffTalking()" />
         <div class="zone__check">
           <TitleForPopup :name="`雇用${popupState().hireType}`" :showCloseBtn="false" />
-          <SelectForPopup :dataList="select().meetSelect" @ok="handleChoiceOk" @cancel="handleChoiceCancel" />
+          <SelectForPopup :dataList="filterSelectList" @ok="handleChoiceOk" @cancel="handleChoiceCancel" />
         </div>
       </div>
     </div>
