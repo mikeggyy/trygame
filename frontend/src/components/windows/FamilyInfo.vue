@@ -38,7 +38,15 @@ import TitleForPopup from '@/components/popup/TitleForPopup.vue';
           <span>{{ config().familySize }}人</span>
         </div>
         <div>
-          <span>佣人</span>
+          <span>大掌櫃</span>
+          <span>{{ config().bigShopkeeperSize }}人</span>
+        </div>
+        <div>
+          <span>掌櫃</span>
+          <span>{{ config().shopkeeperSize }}人</span>
+        </div>
+        <div>
+          <span>雜工</span>
           <span>{{ config().laborerSize }}人</span>
         </div>
         <div>
@@ -47,7 +55,7 @@ import TitleForPopup from '@/components/popup/TitleForPopup.vue';
         </div>
         <div>
           <span>船長</span>
-          <span>{{ config().shipManSzie }}人</span>
+          <span>{{ config().shipManSize }}人</span>
         </div>
         <div>
           <span>倉庫數</span>

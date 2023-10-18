@@ -52,6 +52,10 @@ export const config = defineStore({
     allRetire: [],
     // 介紹人限制
     introducerLimit: 1,
+    // 大掌櫃限制
+    bigShopkeeperLimit: 1,
+    // 掌櫃限制
+    shopkeeperLimit: 4,
     // 雜工限制
     laborerLimit: 12,
     // 保鑣限制
@@ -64,7 +68,7 @@ export const config = defineStore({
     familySize(state) {
       return state.allEmployees.filter(employee => employee.type === '家人').length;
     },
-    // 佣人數量
+    // 雜工數量
     laborerSize(state) {
       return state.allEmployees.filter(employee => employee.type === '雜工').length;
     },
@@ -73,8 +77,16 @@ export const config = defineStore({
       return state.allEmployees.filter(employee => employee.type === '保鑣').length;
     },
     // 船長數量
-    shipManSzie(state) {
+    shipManSize(state) {
       return state.allEmployees.filter(employee => employee.type === '船長').length;
+    },
+    // 掌櫃數量
+    shopkeeperSize(state) {
+      return state.allEmployees.filter(employee => employee.type === '掌櫃').length;
+    },
+    // 大掌櫃數量
+    bigShopkeeperSize(state) {
+      return state.allEmployees.filter(employee => employee.type === '大掌櫃').length;
     },
   },
   actions: {
@@ -164,12 +176,8 @@ export const config = defineStore({
         this.allEmployees[index].ability += 20
         this.allEmployees[index].paylimit += 20
       }
-
       this.allEmployees[index].profession = value;
       this.allEmployees[index].type = value;
-
     }
-
   },
-
 });

@@ -34,25 +34,38 @@ const MinlimitMoney = ref(null)
 const isFire = ref(false)
 // 開除確定
 const isOpenYesOrNo = ref(false)
-// 初始對話
-currentTalking.value = talking().getMeetStaffTalking()
-// 篩選可對話類型
-filterSelectList.value = select().meetSelect.filter(item => item.limit == popupState().meetStaffType || item.limit == null)
-
-// 檢查是否有該類型人員
-if (config().allEmployees.some((item) => item.type == popupState().meetStaffType)) {
-  meetList.value = config().allEmployees.filter(employee => employee.type == popupState().meetStaffType)
-  if (meetList.value.length == 1) {
-    meetItem.value = meetList.value[0]
+const init = () => {
+  // 初始對話
+  currentTalking.value = talking().getMeetStaffTalking()
+  select().meetSelect = select().meetSelect.filter(element => {
+    if (element.name == '升大掌櫃' && config().bigShopkeeperSize >= config().bigShopkeeperLimit) {
+      return false; // 返回 false 将移除这个元素
+    }
+    if (element.name == '升掌櫃' && config().shopkeeperSize >= config().shopkeeperLimit) {
+      return false; // 返回 false 将移除这个元素
+    }
+    return true; // 返回 true 保留其他元素
+  });
+  // 篩選可對話類型
+  filterSelectList.value = select().meetSelect.filter(item => item.limit == popupState().meetStaffType || item.limit == null)
+  // 檢查是否有該類型人員
+  if (config().allEmployees.some((item) => item.type == popupState().meetStaffType)) {
+    meetList.value = config().allEmployees.filter(employee => employee.type == popupState().meetStaffType)
+    if (meetList.value.length == 1) {
+      meetItem.value = meetList.value[0]
+    }
+    employeeIndex.value = config().allEmployees.findIndex(employee => employee.name == meetItem.value.name);
+  } else {
+    isOpenDescription.value = false
   }
-  employeeIndex.value = config().allEmployees.findIndex(employee => employee.name == meetItem.value.name);
-} else {
-  isOpenDescription.value = false
 }
+init()
+
 // 開啟對話視窗
 const handleMeetOk = (item) => {
   isMeetCheck.value = true
   meetItem.value = item
+  employeeIndex.value = config().allEmployees.findIndex(employee => employee.name == meetItem.value.name);
 }
 // 關閉對話視窗
 const handleMeetCancel = () => {
@@ -158,7 +171,7 @@ const clickSpace = () => {
 <template>
   <div class="MeetStaff">
     <div v-if="isOpenDescription == false">
-      <DescriptionForPopup :title="`試圖傳喚${popupState().meetStaffType}`" :content="`醒，你還沒有${popupState().meetStaffType}`"
+      <DescriptionForPopup :title="`試圖傳喚${popupState().meetStaffType}`" :content="`你還沒有${popupState().meetStaffType}`"
         @cancel="popupState().setMeetStaffType('')" />
     </div>
     <div v-else>
