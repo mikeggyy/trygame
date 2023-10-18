@@ -88,6 +88,10 @@ export const config = defineStore({
     bigShopkeeperSize(state) {
       return state.allEmployees.filter(employee => employee.type === '大掌櫃').length;
     },
+    // 介紹人數量
+    introducerSize(state) {
+      return state.allEmployees.filter(employee => employee.type === '介紹人').length;
+    },
   },
   actions: {
     setName(name) {

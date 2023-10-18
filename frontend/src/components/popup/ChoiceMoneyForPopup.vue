@@ -90,7 +90,7 @@ const handleCancel = () => {
             <TitleForPopup name="選擇金額" @close="popupState().setChoiceMoney(false)" />
             <div class="zone__content">
                 <div class="wrap__money">
-                    <div class="money">{{ money }}兩</div>
+                    <div class="money">{{ money }}両</div>
                 </div>
                 <div class="wrap__select">
                     <div class="box__select">
@@ -99,35 +99,35 @@ const handleCancel = () => {
                                 <input type="radio" id="money1" name="money" :value="1" v-model="selectMoney" checked />
                                 <span class="check"></span>
                             </span>
-                            <span class="money_text">1兩</span>
+                            <span class="money_text">1両</span>
                         </label>
                         <label for="money2">
                             <span class="custom-radio">
                                 <input type="radio" id="money2" name="money" v-model="selectMoney" :value="10" />
                                 <span class="check"></span>
                             </span>
-                            <span class="money_text">10兩</span>
+                            <span class="money_text">10両</span>
                         </label>
                         <label for="money3">
                             <span class="custom-radio">
                                 <input type="radio" id="money3" name="money" v-model="selectMoney" :value="100" />
                                 <span class="check"></span>
                             </span>
-                            <span class="money_text">100兩</span>
+                            <span class="money_text">100両</span>
                         </label>
                         <label for="money4">
                             <span class="custom-radio">
                                 <input type="radio" id="money4" name="money" v-model="selectMoney" :value="1000" />
                                 <span class="check"></span>
                             </span>
-                            <span class="money_text">1000兩</span>
+                            <span class="money_text">1000両</span>
                         </label>
                         <label for="money5">
                             <span class="custom-radio">
                                 <input type="radio" id="money5" name="money" v-model="selectMoney" :value="10000" />
                                 <span class="check"></span>
                             </span>
-                            <span class="money_text">10000兩</span>
+                            <span class="money_text">10000両</span>
                         </label>
                         <span class="unit">
                             單位

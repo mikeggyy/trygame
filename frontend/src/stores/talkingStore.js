@@ -5,10 +5,10 @@ export const talking = defineStore({
   state: () => ({
     // 確認薪資對話
     checkMoneyTalking: [
-      { name: '我一個月只要money兩就可以。' },
-      { name: '一個月money兩可以接受嗎..' },
-      { name: '一個月money兩就行了!' },
-      { name: '一個月money兩,很划算吧。' },
+      { name: '我一個月只要money両就可以。' },
+      { name: '一個月money両可以接受嗎..' },
+      { name: '一個月money両就行了!' },
+      { name: '一個月money両,很划算吧。' },
     ],
     // 決定雇用對話
     hireOK: [

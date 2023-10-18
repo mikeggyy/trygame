@@ -37,12 +37,13 @@ const isOpenYesOrNo = ref(false)
 const init = () => {
   // 初始對話
   currentTalking.value = talking().getMeetStaffTalking()
+  // 篩選選擇功能
   select().meetSelect = select().meetSelect.filter(element => {
     if (element.name == '升大掌櫃' && config().bigShopkeeperSize >= config().bigShopkeeperLimit) {
-      return false; // 返回 false 将移除这个元素
+      return false;
     }
     if (element.name == '升掌櫃' && config().shopkeeperSize >= config().shopkeeperLimit) {
-      return false; // 返回 false 将移除这个元素
+      return false;
     }
     return true; // 返回 true 保留其他元素
   });
