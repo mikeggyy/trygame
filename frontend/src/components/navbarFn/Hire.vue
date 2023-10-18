@@ -17,22 +17,22 @@ const isLimit = ref(false)
 const checkEmployeesLimit = () => {
   switch (popupState().hireType) {
     case '介紹人':
-      if (config().allEmployees.filter(item => item.type == '介紹人').length >=config().introducerLimit) {
+      if (config().allEmployees.filter(item => item.type == '介紹人').length >= config().introducerLimit) {
         isLimit.value = true
       }
       break;
     case '雜工':
-      if (config().allEmployees.filter(item => item.type == '雜工').length >=config().laborerLimit) {
+      if (config().allEmployees.filter(item => item.type == '雜工').length >= config().laborerLimit) {
         isLimit.value = true
       }
       break;
     case '保鑣':
-      if (config().allEmployees.filter(item => item.type == '保鑣').length >=config().bodyguardLimit) {
+      if (config().allEmployees.filter(item => item.type == '保鑣').length >= config().bodyguardLimit) {
         isLimit.value = true
       }
       break;
     case '船長':
-      if (config().allEmployees.filter(item => item.type == '保鑣').length >=config().shipManLimit) {
+      if (config().allEmployees.filter(item => item.type == '保鑣').length >= config().shipManLimit) {
         isLimit.value = true
       }
       break;
@@ -70,9 +70,10 @@ const handleHireCancel = () => {
 }
 // 招募完成最後一次對話
 const closeClickSpace = () => {
-  popupState().setHireType('')
+  peopleItem.value.profession = popupState().hireType
   config().setEmployees(peopleItem.value)
   people().removePeopleList(peopleItem.value.name)
+  popupState().setHireType('')
 }
 // 初始化時調用
 checkEmployeesLimit();

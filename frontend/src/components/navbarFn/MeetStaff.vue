@@ -33,7 +33,7 @@ const MinlimitMoney = ref(null)
 // 是否開除
 const isFire = ref(false)
 // 開除確定
-const isYesFire = ref(false)
+const isOpenYesOrNo = ref(false)
 // 初始對話
 currentTalking.value = talking().getMeetStaffTalking()
 // 篩選可對話類型
@@ -45,6 +45,7 @@ if (config().allEmployees.some((item) => item.type == popupState().meetStaffType
   if (meetList.value.length == 1) {
     meetItem.value = meetList.value[0]
   }
+  employeeIndex.value = config().allEmployees.findIndex(employee => employee.name == meetItem.value.name);
 } else {
   isOpenDescription.value = false
 }
@@ -62,10 +63,12 @@ const handleChoiceOk = (item) => {
   executeValue.value = item
   switch (item.value) {
     case '升大掌櫃':
-      console.log();
+      isOpenYesOrNo.value = true
+      currentTalking.value = talking().getUpShopkeeperTalking()
       break;
     case '升掌櫃':
-      console.log();
+      isOpenYesOrNo.value = true
+      currentTalking.value = talking().getUpShopkeeperTalking()
       break;
     case '讓他出海':
       console.log();
@@ -111,7 +114,6 @@ const handleChoiceCancel = () => {
 // 金額設定完後
 const handleDecideMoney = (num) => {
   popupState().setChoiceMoney(false)
-  employeeIndex.value = config().allEmployees.findIndex(employee => employee.name == meetItem.value.name);
   switch (executeValue.value.value) {
     case '給小費':
       currentTalking.value = talking().getTipTalking()
@@ -129,7 +131,7 @@ const handleDecideMoney = (num) => {
 // 確定解僱
 const handleYesFire = () => {
   currentTalking.value = talking().getYesFireTalking()
-  isYesFire.value = true
+  isOpenYesOrNo.value = true
 }
 // 取消解僱
 const handleNoFire = () => {
@@ -137,7 +139,18 @@ const handleNoFire = () => {
   currentTalking.value = talking().getNoFireTalking()
 }
 const clickSpace = () => {
-  config().fireEmployees(meetItem.value.name)
+  switch (executeValue.value.value) {
+    case '升大掌櫃':
+      config().upShopkeeper({ index: employeeIndex.value, value: '大掌櫃' });
+      break;
+    case '升掌櫃':
+      config().upShopkeeper({ index: employeeIndex.value, value: '掌櫃' });
+      break;
+    case '解雇':
+      config().fireEmployees(meetItem.value.name)
+      break;
+  }
+
   popupState().meetStaffType = ''
 }
 
@@ -167,7 +180,7 @@ const clickSpace = () => {
       <div v-if="isFire == true">
         <YesOrNoForPopup :title="`確定${executeValue.value} ${meetItem.name} 嗎`" @yes="handleYesFire" @no="handleNoFire" />
       </div>
-      <div v-if="isYesFire == true">
+      <div v-if="isOpenYesOrNo == true">
         <ClickSpaceForPopup @close="clickSpace" />
       </div>
     </div>

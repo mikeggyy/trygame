@@ -47,7 +47,7 @@ function generateLaborer(count) {
       ability: randomAbility,
       pay: randomPay,
       // 薪水限制
-      paylimit: 20,
+      paylimit: 15,
       // 人物好感度
       howMuchLike: 200,
       // 人物健康度

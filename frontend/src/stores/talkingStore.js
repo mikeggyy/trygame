@@ -71,6 +71,19 @@ export const talking = defineStore({
       { name: '剛才要解僱我的嗎...是不是搞錯了什麼...', limit: '' },
       { name: '這可不是開玩笑的事情!', limit: '' },
     ],
+    // 升職對話
+    upShopkeeperTalking: [
+      { name: '謝謝您的信任，老板。我會全力以赴的！', limit: '' },
+      { name: '我會好好工作的，老板。感謝您給予這個機會！', limit: '' },
+      { name: '我會盡力不辜負您的期望，老板。謝謝您提拔我！', limit: '' },
+      { name: '感謝您的信任，老板。我會用心做好這份工作的！', limit: '' },
+      { name: '謝謝您的看重，老板。我會讓您刮目相看的！', limit: '' },
+      { name: '我不會辜負您的期望，老板。謝謝您的提拔！', limit: '' },
+      { name: '謝謝您給予這個機會，老板。我會盡全力的！', limit: '' },
+      { name: '我會保持努力，不讓您失望的，老板。謝謝您的信任！', limit: '' },
+      { name: '感謝您的支持，老板。我會更加努力的！', limit: '' },
+      { name: '我會珍惜這個機會，老板。謝謝您的提拔！', limit: '' },
+    ]
   }),
   actions: {
     getCheckMoneyTalking(value = 666) {
@@ -111,6 +124,11 @@ export const talking = defineStore({
     getNoFireTalking() {
       const randomIndex = Math.floor(Math.random() * this.noFireTalking.length);
       const randomItem = this.noFireTalking[randomIndex];
+      return randomItem.name
+    },
+    getUpShopkeeperTalking() {
+      const randomIndex = Math.floor(Math.random() * this.upShopkeeperTalking.length);
+      const randomItem = this.upShopkeeperTalking[randomIndex];
       return randomItem.name
     },
 

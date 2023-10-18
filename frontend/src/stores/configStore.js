@@ -152,6 +152,24 @@ export const config = defineStore({
       const { index, value } = payload;
       this.allEmployees[index].pay = value;
     },
+    // 升掌櫃 or 大掌櫃
+    upShopkeeper(payload) {
+      const { index, value } = payload;
+      if (value == '掌櫃') {
+        this.allEmployees[index].pay += 15
+        this.allEmployees[index].ability += 15
+        this.allEmployees[index].paylimit += 15
+      } else if (value == '大掌櫃') {
+        this.allEmployees[index].pay += 20
+        this.allEmployees[index].ability += 20
+        this.allEmployees[index].paylimit += 20
+      }
+
+      this.allEmployees[index].profession = value;
+      this.allEmployees[index].type = value;
+
+    }
+
   },
 
 });
