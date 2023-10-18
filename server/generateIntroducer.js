@@ -15,6 +15,8 @@ const generateIntroducer = () => {
       paylimit: 50,
       // 人物好感度
       howMuchLike: 200,
+      // 人物健康度
+      health: 80,
       smuggling: false,
       limit: '',
       headImg: 'introducer-001.png',
@@ -32,6 +34,8 @@ const generateIntroducer = () => {
       paylimit: 50,
       // 人物好感度
       howMuchLike: 200,
+      // 人物健康度
+      health: 80,
       smuggling: false,
       limit: '',
       headImg: 'introducer-002.png',
@@ -49,6 +53,8 @@ const generateIntroducer = () => {
       paylimit: 50,
       // 人物好感度
       howMuchLike: 200,
+      // 人物健康度
+      health: 80,
       smuggling: false,
       limit: '',
       headImg: 'introducer-001.png',
@@ -66,6 +72,8 @@ const generateIntroducer = () => {
       paylimit: 50,
       // 人物好感度
       howMuchLike: 200,
+      // 人物健康度
+      health: 80,
       smuggling: true,
       limit: '',
       headImg: 'introducer-004.png',
@@ -81,7 +89,10 @@ const generateIntroducer = () => {
       pay: 18,
       // 薪水限制
       paylimit: 50,
-      impression: 50,
+      // 人物好感度
+      howMuchLike: 200,
+      // 人物健康度
+      health: 80,
       smuggling: true,
       limit: '',
       headImg: 'introducer-001.png',

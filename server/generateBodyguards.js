@@ -44,6 +44,7 @@ const generateBodyguards = (count) => {
     const randomAbility = Math.floor(Math.random() * 81) + 20;
     const randomPay = Math.floor(Math.random() * 10) + 6;
     const randomSmuggling = Math.random() > 0.9;
+    const randomHealth = Math.floor(Math.random() * 40) + 60;
     const body = {
       id: i + 1,
       name: `${randomName}`,
@@ -57,6 +58,8 @@ const generateBodyguards = (count) => {
       paylimit: 50,
       // 人物好感度
       howMuchLike: 200,
+      // 人物健康度
+      health: randomHealth,
       // 是否接受做壞事
       smuggling: randomSmuggling,
       // 是否有限制
@@ -66,7 +69,7 @@ const generateBodyguards = (count) => {
       // 角色類型
       type: '保鑣',
       // 角色職業
-      profession: '保鑣',
+      profession: '武士',
       // 描述
       description: '沒落的武士',
     };

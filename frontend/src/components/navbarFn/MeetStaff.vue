@@ -2,10 +2,12 @@
 import { ref } from 'vue';
 import { popupState, config, talking, select } from '@/stores'
 import TalkForPopup from '@/components/popup/TalkForPopup.vue';
+import YesOrNoForPopup from '@/components/popup/YesOrNoForPopup.vue';
 import TitleForPopup from '@/components/popup/TitleForPopup.vue';
 import SelectForPopup from '@/components/popup/SelectForPopup.vue'
 import DescriptionForPopup from '@/components/popup/DescriptionForPopup.vue'
 import ChoiceMoneyForPopup from '@/components/popup/ChoiceMoneyForPopup.vue'
+import ClickSpaceForPopup from '@/components/popup/ClickSpaceForPopup.vue';
 // 是否開啟警告
 const isOpenDescription = ref(true)
 // 傳喚清單
@@ -28,6 +30,10 @@ const isPrivateMoney = ref(false)
 const MaxlimitMoney = ref(null)
 // 最小給予金額
 const MinlimitMoney = ref(null)
+// 是否開除
+const isFire = ref(false)
+// 開除確定
+const isYesFire = ref(false)
 // 初始對話
 currentTalking.value = talking().getMeetStaffTalking()
 // 篩選可對話類型
@@ -89,7 +95,8 @@ const handleChoiceOk = (item) => {
       console.log();
       break;
     case '解雇':
-      console.log();
+      currentTalking.value = talking().getPreFireTalking()
+      isFire.value = true
       break;
   }
 }
@@ -119,6 +126,20 @@ const handleDecideMoney = (num) => {
       break;
   }
 }
+// 確定解僱
+const handleYesFire = () => {
+  currentTalking.value = talking().getYesFireTalking()
+  isYesFire.value = true
+}
+// 取消解僱
+const handleNoFire = () => {
+  isFire.value = false
+  currentTalking.value = talking().getNoFireTalking()
+}
+const clickSpace = () => {
+  config().fireEmployees(meetItem.value.name)
+  popupState().meetStaffType = ''
+}
 
 </script>
 <template>
@@ -142,6 +163,12 @@ const handleDecideMoney = (num) => {
       <div v-if="popupState().choiceMoney == true">
         <ChoiceMoneyForPopup :MaxlimitMoney="MaxlimitMoney" :MinlimitMoney="MinlimitMoney"
           @decideMoney="handleDecideMoney" :isPrivateMoney="isPrivateMoney" />
+      </div>
+      <div v-if="isFire == true">
+        <YesOrNoForPopup :title="`確定${executeValue.value} ${meetItem.name} 嗎`" @yes="handleYesFire" @no="handleNoFire" />
+      </div>
+      <div v-if="isYesFire == true">
+        <ClickSpaceForPopup @close="clickSpace" />
       </div>
     </div>
   </div>

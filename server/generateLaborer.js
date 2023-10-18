@@ -39,6 +39,7 @@ function generateLaborer(count) {
     const randomAbility = Math.floor(Math.random() * 71) + 20;
     const randomPay = Math.floor(Math.random() * 4) + 2;
     const randomSmuggling = Math.random() > 0.9;
+    const randomHealth = Math.floor(Math.random() * 40) + 60;
     const body = {
       id: peopleList.length + 1,
       name: randomName,
@@ -49,11 +50,13 @@ function generateLaborer(count) {
       paylimit: 20,
       // 人物好感度
       howMuchLike: 200,
+      // 人物健康度
+      health: randomHealth,
       smuggling: randomSmuggling,
       limit: '',
       headImg: 'laborer-001.png',
       type: '雜工',
-      profession: '雜工',
+      profession: '',
       description: '沒沒無聞的雜工'
     };
 

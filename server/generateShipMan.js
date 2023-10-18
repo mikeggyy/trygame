@@ -51,6 +51,7 @@ const generateShipMan = (count) => {
     const randomAbility = Math.floor(Math.random() * 81) + 20;
     const randomPay = Math.floor(Math.random() * 15) + 30;
     const randomSmuggling = Math.random() > 0.9;
+    const randomHealth = Math.floor(Math.random() * 40) + 60;
     const body = {
       id: i + 1,
       name: `${randomName}`,
@@ -61,11 +62,13 @@ const generateShipMan = (count) => {
       paylimit: 50,
       // 人物好感度
       howMuchLike: 200,
+      // 人物健康度
+      health: randomHealth,
       smuggling: randomSmuggling,
       limit: '',
       headImg: 'shipMan-001.png',
       type: '船長',
-      profession: '船長',
+      profession: '',
       description: '沒沒無聞的船長',
     };
 

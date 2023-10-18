@@ -43,6 +43,33 @@ export const talking = defineStore({
       { name: '非常感激，老板！我會保證您不會失望的！', limit: '' },
       { name: '謝謝您的信任，我會更加專注於工作的！', limit: '' },
       { name: '這對我來說意義重大，謝謝老板的鼓勵！', limit: '' },
+      { name: '謝謝您，老板。我會記住這份恩情的！', limit: '' },
+      { name: '真的嗎？太感謝了！我不會辜負您的期望的！', limit: '' },
+    ],
+    // 預解雇對話
+    preFireTalking: [
+      { name: '老板，你是認真的嗎...', limit: '' },
+      { name: '等等...你是認真的嗎？', limit: '' },
+      { name: '我...我不知道該說什麼...', limit: '' },
+      { name: '哎呀，這真的讓我非常震驚...', limit: '' },
+      { name: '什麼？這...這怎麼可能？', limit: '' },
+      { name: '是在開玩笑嗎...', limit: '' },
+    ],
+    // 確定解僱對話
+    yesFireTalking: [
+      { name: '我明白了，老板。或許這就是命運吧。', limit: '' },
+      { name: '好吧，我試過了。謝謝這段時間的機會。', limit: '' },
+      { name: '看來我們的路不再交匯。這是一種宿命吧。', limit: '' },
+      { name: '這真的太不公平了！我付出了這麼多，竟然這樣對我！', limit: '' },
+      { name: '這樣對待我，我絕對不會忘記的！', limit: '' },
+      { name: '你會後悔的，這是對我不公平的對待！', limit: '' },
+    ],
+    // 取消解僱對話
+    noFireTalking: [
+      { name: '改變主意了嗎...真是讓人摸不著頭緒...', limit: '' },
+      { name: '後悔了嗎？我可是差點就要走了...', limit: '' },
+      { name: '剛才要解僱我的嗎...是不是搞錯了什麼...', limit: '' },
+      { name: '這可不是開玩笑的事情!', limit: '' },
     ],
   }),
   actions: {
@@ -71,5 +98,21 @@ export const talking = defineStore({
       const randomItem = this.addPayTalking[randomIndex];
       return randomItem.name
     },
+    getPreFireTalking() {
+      const randomIndex = Math.floor(Math.random() * this.preFireTalking.length);
+      const randomItem = this.preFireTalking[randomIndex];
+      return randomItem.name
+    },
+    getYesFireTalking() {
+      const randomIndex = Math.floor(Math.random() * this.yesFireTalking.length);
+      const randomItem = this.yesFireTalking[randomIndex];
+      return randomItem.name
+    },
+    getNoFireTalking() {
+      const randomIndex = Math.floor(Math.random() * this.noFireTalking.length);
+      const randomItem = this.noFireTalking[randomIndex];
+      return randomItem.name
+    },
+
   },
 });

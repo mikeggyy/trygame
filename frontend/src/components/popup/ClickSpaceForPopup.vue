@@ -1,4 +1,5 @@
 <script setup>
+// import ClickSpaceForPopup from '@/components/popup/ClickSpaceForPopup.vue';
 import { ref } from 'vue';
 const emits = defineEmits();
 const { count } = defineProps({

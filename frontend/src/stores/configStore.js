@@ -48,14 +48,16 @@ export const config = defineStore({
     isTimeStart: false,
     // 員工總數
     allEmployees: [],
+    // 退休員工總數
+    allRetire: [],
     // 介紹人限制
     introducerLimit: 1,
     // 雜工限制
-    laborerLimit: 30,
+    laborerLimit: 12,
     // 保鑣限制
-    bodyguardLimit: 30,
+    bodyguardLimit: 6,
     // 船長限制
-    shipManLimit: 30,
+    shipManLimit: 4,
   }),
   getters: {
     // 家族人數
@@ -121,6 +123,16 @@ export const config = defineStore({
     },
     setEmployees(item) {
       this.allEmployees.push(item)
+    },
+    // 開除員工
+    fireEmployees(employeeName) {
+      const employeeIndex = this.allEmployees.findIndex(employee => employee.name === employeeName);
+      // 好感度歸0
+      this.allEmployees[employeeIndex].howMuchLike = 0;
+      // 放進退休名單
+      this.allRetire = this.allEmployees.filter(employee => employee.name === employeeName);
+      // 員工除名
+      this.allEmployees.splice(employeeIndex, 1);
     },
     // 設定金主
     setTotalAssets(num) {
