@@ -1,4 +1,3 @@
-import { computed } from 'vue';
 import { defineStore } from 'pinia'
 
 //設定檔
@@ -50,13 +49,13 @@ export const config = defineStore({
     // 員工總數
     allEmployees: [],
     // 介紹人限制
-    introducerLimit:1,
+    introducerLimit: 1,
     // 雜工限制
-    laborerLimit:30,
+    laborerLimit: 30,
     // 保鑣限制
-    bodyguardLimit:30,
+    bodyguardLimit: 30,
     // 船長限制
-    shipManLimit:30,
+    shipManLimit: 30,
   }),
   getters: {
     // 家族人數
@@ -122,7 +121,25 @@ export const config = defineStore({
     },
     setEmployees(item) {
       this.allEmployees.push(item)
-    }
+    },
+    // 設定金主
+    setTotalAssets(num) {
+      this.totalAssets = this.totalAssets + num
+    },
+    // 設定私房錢
+    setPrivateMoney(num) {
+      this.privateMoney = this.privateMoney + num
+    },
+    // 設定某人好感度
+    setHowMuchLike(payload) {
+      const { index, value } = payload;
+      this.allEmployees[index].howMuchLike = this.allEmployees[index].howMuchLike + value;
+    },
+    // 設定加薪
+    setPay(payload) {
+      const { index, value } = payload;
+      this.allEmployees[index].pay = value;
+    },
   },
 
 });

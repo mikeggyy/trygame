@@ -1,36 +1,59 @@
 <script setup>
 import { ref } from 'vue';
-import { popupState, config,talking,select } from '@/stores'
+import { popupState, config, talking, select } from '@/stores'
 import TalkForPopup from '@/components/popup/TalkForPopup.vue';
 import TitleForPopup from '@/components/popup/TitleForPopup.vue';
 import SelectForPopup from '@/components/popup/SelectForPopup.vue'
 import DescriptionForPopup from '@/components/popup/DescriptionForPopup.vue'
-import ChoiceMoney from '@/components/popup/ChoiceMoney.vue'
-const isOpen = ref(true)
+import ChoiceMoneyForPopup from '@/components/popup/ChoiceMoneyForPopup.vue'
+// 是否開啟警告
+const isOpenDescription = ref(true)
+// 傳喚清單
 const meetList = ref([])
+// 傳喚對象
 const meetItem = ref({})
+// 是否確認開始指令視窗
 const isMeetCheck = ref(false)
+// 該傳喚人員可用對話類型
 const filterSelectList = ref([])
-const isShowChoiceMoney = ref(false)
+// 執行哪個指令
+const executeValue = ref('')
+// 對話內容
+const currentTalking = ref(null)
+// 該員工在哪個陣列
+const employeeIndex = ref(null)
+// 是否是私房錢
+const isPrivateMoney = ref(false)
+// 最大給予金額
+const MaxlimitMoney = ref(null)
+// 最小給予金額
+const MinlimitMoney = ref(null)
+// 初始對話
+currentTalking.value = talking().getMeetStaffTalking()
+// 篩選可對話類型
 filterSelectList.value = select().meetSelect.filter(item => item.limit == popupState().meetStaffType || item.limit == null)
 
 // 檢查是否有該類型人員
 if (config().allEmployees.some((item) => item.type == popupState().meetStaffType)) {
   meetList.value = config().allEmployees.filter(employee => employee.type == popupState().meetStaffType)
-  if(meetList.value.length ==1){
+  if (meetList.value.length == 1) {
     meetItem.value = meetList.value[0]
   }
 } else {
-  isOpen.value = false
+  isOpenDescription.value = false
 }
+// 開啟對話視窗
 const handleMeetOk = (item) => {
   isMeetCheck.value = true
   meetItem.value = item
 }
+// 關閉對話視窗
 const handleMeetCancel = () => {
   popupState().setMeetStaffType('')
 }
-const handleChoiceOk = (item)=>{
+// 選擇指令
+const handleChoiceOk = (item) => {
+  executeValue.value = item
   switch (item.value) {
     case '升大掌櫃':
       console.log();
@@ -51,10 +74,16 @@ const handleChoiceOk = (item)=>{
       console.log();
       break;
     case '給小費':
-      isShowChoiceMoney.value = true
+      isPrivateMoney.value = true
+      MinlimitMoney.value = 1
+      MaxlimitMoney.value = 50
+      popupState().setChoiceMoney(true)
       break;
     case '加薪':
-      console.log();
+      isPrivateMoney.value = false
+      MinlimitMoney.value = meetItem.value.pay
+      MaxlimitMoney.value = meetItem.value.paylimit
+      popupState().setChoiceMoney(true)
       break;
     case '讓他去旅行':
       console.log();
@@ -64,24 +93,37 @@ const handleChoiceOk = (item)=>{
       break;
   }
 }
-const handleChoiceCancel = () =>{
-  if(meetList.value.length == 1){
+// 關閉指令視窗
+const handleChoiceCancel = () => {
+  if (meetList.value.length == 1) {
     popupState().meetStaffType = ''
-  }else{
+  } else {
     isMeetCheck.value = false
   }
 }
-const handleDecideMoney= (num) =>{
-  console.log(num);
-  isShowChoiceMoney.value = false
+// 金額設定完後
+const handleDecideMoney = (num) => {
+  popupState().setChoiceMoney(false)
+  employeeIndex.value = config().allEmployees.findIndex(employee => employee.name == meetItem.value.name);
+  switch (executeValue.value.value) {
+    case '給小費':
+      currentTalking.value = talking().getTipTalking()
+      config().setPrivateMoney(-num)
+      // 找到符合條件的員工，修改 howMuchLike
+      config().setHowMuchLike({ index: employeeIndex.value, value: num });
+      break;
+    case '加薪':
+      currentTalking.value = talking().getAddPayTalking()
+      // 找到符合條件的員工，修改 howMuchLike
+      config().setPay({ index: employeeIndex.value, value: num });
+      break;
+  }
 }
-const handleCloseDecideMoney = () =>{
-  isShowChoiceMoney.value = false
-}
+
 </script>
 <template>
   <div class="MeetStaff">
-    <div v-if="isOpen == false">
+    <div v-if="isOpenDescription == false">
       <DescriptionForPopup :title="`試圖傳喚${popupState().meetStaffType}`" :content="`醒，你還沒有${popupState().meetStaffType}`"
         @cancel="popupState().setMeetStaffType('')" />
     </div>
@@ -91,14 +133,15 @@ const handleCloseDecideMoney = () =>{
         <SelectForPopup :dataList="meetList" @ok="handleMeetOk" @cancel="handleMeetCancel" />
       </div>
       <div v-if="meetList.length == 1 || isMeetCheck == true" class="">
-        <TalkForPopup :peopleItem="meetItem" :talking="talking().getMeetStaffTalking()" />
+        <TalkForPopup :peopleItem="meetItem" :talking="currentTalking" />
         <div class="zone__check">
           <TitleForPopup :name="`傳喚${popupState().hireType}`" :showCloseBtn="false" />
           <SelectForPopup :dataList="filterSelectList" @ok="handleChoiceOk" @cancel="handleChoiceCancel" />
         </div>
       </div>
-      <div v-if="isShowChoiceMoney == true">
-        <ChoiceMoney @decideMoney="handleDecideMoney" @close="handleCloseDecideMoney"/>
+      <div v-if="popupState().choiceMoney == true">
+        <ChoiceMoneyForPopup :MaxlimitMoney="MaxlimitMoney" :MinlimitMoney="MinlimitMoney"
+          @decideMoney="handleDecideMoney" :isPrivateMoney="isPrivateMoney" />
       </div>
     </div>
   </div>
@@ -126,6 +169,7 @@ const handleCloseDecideMoney = () =>{
     background-color: #fff;
     padding: 2px;
   }
+
   .zone__check {
     position: absolute;
     top: 80px;

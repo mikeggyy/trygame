@@ -11,7 +11,10 @@ const generateIntroducer = () => {
       age: 54,
       ability: 69,
       pay: 16,
-      impression: 50,
+      // 薪水限制
+      paylimit: 50,
+      // 人物好感度
+      howMuchLike: 200,
       smuggling: false,
       limit: '',
       headImg: 'introducer-001.png',
@@ -25,7 +28,10 @@ const generateIntroducer = () => {
       age: 48,
       ability: 86,
       pay: 24,
-      impression: 50,
+      // 薪水限制
+      paylimit: 50,
+      // 人物好感度
+      howMuchLike: 200,
       smuggling: false,
       limit: '',
       headImg: 'introducer-002.png',
@@ -39,7 +45,10 @@ const generateIntroducer = () => {
       age: 57,
       ability: 75,
       pay: 16,
-      impression: 50,
+      // 薪水限制
+      paylimit: 50,
+      // 人物好感度
+      howMuchLike: 200,
       smuggling: false,
       limit: '',
       headImg: 'introducer-001.png',
@@ -53,7 +62,10 @@ const generateIntroducer = () => {
       age: 39,
       ability: 56,
       pay: 20,
-      impression: 50,
+      // 薪水限制
+      paylimit: 50,
+      // 人物好感度
+      howMuchLike: 200,
       smuggling: true,
       limit: '',
       headImg: 'introducer-004.png',
@@ -67,6 +79,8 @@ const generateIntroducer = () => {
       age: 42,
       ability: 47,
       pay: 18,
+      // 薪水限制
+      paylimit: 50,
       impression: 50,
       smuggling: true,
       limit: '',

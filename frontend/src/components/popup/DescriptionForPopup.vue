@@ -1,4 +1,5 @@
 <script setup>
+// import DescriptionForPopup from '@/components/popup/DescriptionForPopup.vue'
 const emits = defineEmits();
 const { content, title } = defineProps({
   content: {

@@ -47,15 +47,27 @@ const generateBodyguards = (count) => {
     const body = {
       id: i + 1,
       name: `${randomName}`,
+      // 年紀
       age: randomAge,
+      // 能力
       ability: randomAbility,
+      // 薪水
       pay: randomPay,
-      impression: 50,
+      // 薪水限制
+      paylimit: 50,
+      // 人物好感度
+      howMuchLike: 200,
+      // 是否接受做壞事
       smuggling: randomSmuggling,
+      // 是否有限制
       limit: '',
+      // 頭像
       headImg: 'bodyguards-001.png',
+      // 角色類型
       type: '保鑣',
+      // 角色職業
       profession: '保鑣',
+      // 描述
       description: '沒落的武士',
     };
 

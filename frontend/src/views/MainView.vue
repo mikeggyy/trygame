@@ -9,6 +9,7 @@ import Scenes from '@/components/windows/Scenes.vue';
 import FamilyInfo from '@/components/windows/FamilyInfo.vue'
 import SalesInfo from '@/components/windows/SalesInfo.vue'
 import Stock from '@/components/windows/Stock.vue'
+import Audio from '@/components/audio/Audio.vue'
 import { config, popupState } from '@/stores';
 import { ref } from 'vue';
 </script>
@@ -25,6 +26,7 @@ import { ref } from 'vue';
         <FamilyInfo />
         <SalesInfo />
         <Stock />
+        <Audio></Audio>
       </div>
       <!-- 開新遊戲視窗 -->
       <div v-if="popupState().newGame == true">

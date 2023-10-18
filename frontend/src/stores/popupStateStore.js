@@ -12,7 +12,11 @@ export const popupState = defineStore({
     // 雇用類型
     hireType: '',
     // 傳喚視窗類型
-    meetStaffType: ''
+    meetStaffType: '',
+    // 選擇金額視窗
+    choiceMoney: false,
+    // 描述彈窗
+    description: false,
   }),
   actions: {
     setNewGame(value) {
@@ -26,6 +30,12 @@ export const popupState = defineStore({
     },
     setMeetStaffType(value) {
       this.meetStaffType = value
+    },
+    setChoiceMoney(value) {
+      this.choiceMoney = value
+    },
+    setDescription(value) {
+      this.description = value
     },
     closeAllPopups() {
       const keys = Object.keys(this.$state); // 获取所有状态属性的键

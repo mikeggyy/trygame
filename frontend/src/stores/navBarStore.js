@@ -52,7 +52,7 @@ export const navBar = defineStore({
               { name: '船長', fn: '雇用員工', value: 4, show: true },
             ]
           },
-          { name: '解雇員工' },
+          // { name: '解雇員工' },
         ]
       },
       {
@@ -70,12 +70,12 @@ export const navBar = defineStore({
       {
         name: '選項',
         list: [
-          { name: '變更家紋', show: true },
+          // { name: '變更家紋', show: true },
           { name: '變更名字', show: true },
-          { name: '變更店名', show: true },
+          // { name: '變更店名', show: true },
           { name: '變更船名', show: true },
-          { name: '設定音樂', show: true },
-          { name: '設定音效', show: true },
+          { name: '音樂開關', show: true },
+          { name: '音效開關', show: true },
         ]
       },
       // {
