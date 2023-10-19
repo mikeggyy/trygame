@@ -19,6 +19,8 @@ export const popupState = defineStore({
     description: false,
     // 資金移動
     moveMoney: '',
+    // 買入
+    buySales: false
   }),
   actions: {
     setNewGame(value) {
@@ -49,6 +51,9 @@ export const popupState = defineStore({
     },
     setMoveMoney(value) {
       this.moveMoney = value
+    },
+    setBuySales(value) {
+      this.buySales = value
     }
   },
 });

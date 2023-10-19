@@ -40,7 +40,7 @@ export const navBar = defineStore({
             ]
           },
           { name: '外出', show: true },
-          { name: '買入', show: true },
+          { name: '買入', fn: '買入', show: true },
           { name: '賣掉', show: true },
           {
             name: '資金移動', show: true,

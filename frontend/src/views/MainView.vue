@@ -11,6 +11,7 @@ import SalesInfo from '@/components/windows/SalesInfo.vue'
 import Stock from '@/components/windows/Stock.vue'
 import Audio from '@/components/audio/Audio.vue'
 import MoveMoney from '@/components/navbarFn/MoveMoney.vue';
+import BuySales from '@/components/navbarFn/BuySales.vue';
 import { config, popupState } from '@/stores';
 import { ref } from 'vue';
 </script>
@@ -45,9 +46,15 @@ import { ref } from 'vue';
       <div v-if="popupState().meetStaffType != ''">
         <MeetStaff />
       </div>
+      <!-- 資金移動 -->
       <div v-if="popupState().moveMoney != ''">
         <MoveMoney />
       </div>
+      <!-- 買入 -->
+      <div v-if="popupState().buySales == true">
+        <BuySales />
+      </div>
+
     </div>
   </div>
 </template>

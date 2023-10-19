@@ -23,7 +23,6 @@ watch(() => popupState().choiceMoney, (newValue, oldValue) => {
   }
 });
 const handleDecideMoney = (money) => {
-  console.log(moveType.value);
   switch (moveType.value) {
     case '藏私房錢':
       config().setTotalAssets(-money)

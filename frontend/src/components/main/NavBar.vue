@@ -31,6 +31,9 @@ const subItemHandle = (item) => {
       config().resetGameStart()
       popupState().setNewGame(true)
       break;
+    case '買入':
+      popupState().setBuySales(true)
+      break;
     case '傳喚':
       popupState().setMeetStaffType(item.name)
       break;

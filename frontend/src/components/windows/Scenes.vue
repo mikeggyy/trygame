@@ -6,7 +6,7 @@ import { debounce } from 'lodash'; // 或者其他防抖函数库
 import TitleForPopup from '@/components/popup/TitleForPopup.vue';
 const placeName = (name) => {
   switch (name) {
-    case 'home':
+    case 'home-001':
       return '自宅'
   }
 }

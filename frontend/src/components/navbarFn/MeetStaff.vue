@@ -189,7 +189,7 @@ const clickSpace = () => {
       </div>
       <div v-if="popupState().choiceMoney == true">
         <ChoiceMoneyForPopup :MaxlimitMoney="MaxlimitMoney" :MinlimitMoney="MinlimitMoney"
-          @decideMoney="handleDecideMoney" :isPrivateMoney="isPrivateMoney" />
+          :isPrivateMoney="isPrivateMoney" :executeValue="executeValue.value" @decideMoney="handleDecideMoney" />
       </div>
       <div v-if="isFire == true">
         <YesOrNoForPopup :title="`確定${executeValue.value} ${meetItem.name} 嗎`" @yes="handleYesFire" @no="handleNoFire" />

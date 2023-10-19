@@ -5,7 +5,7 @@ import DescriptionForPopup from '@/components/popup/DescriptionForPopup.vue'
 import { popupState, config } from '@/stores'
 import { ref } from 'vue';
 const emits = defineEmits();
-const { isPrivateMoney, MaxlimitMoney, MinlimitMoney, title } = defineProps({
+const { isPrivateMoney, MaxlimitMoney, MinlimitMoney, title, executeValue } = defineProps({
     MaxlimitMoney: {
         type: Number,
         default: 50
@@ -21,6 +21,10 @@ const { isPrivateMoney, MaxlimitMoney, MinlimitMoney, title } = defineProps({
     title: {
         type: String,
         default: '選擇金額'
+    },
+    executeValue: {
+        type: String,
+        default: ''
     }
 });
 const money = ref(1)
@@ -77,7 +81,7 @@ const decideMouseDown = () => {
 }
 const decideMouseUp = () => {
     isDecidePressed.value = false;
-    if (isMoneyEnough.value - money.value >= 0) {
+    if (isMoneyEnough.value - money.value >= 0 || executeValue == '加薪') {
         isDecidePressed.value = false;
         emits('decideMoney', money.value)
     } else {

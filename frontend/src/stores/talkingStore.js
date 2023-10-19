@@ -95,6 +95,18 @@ export const talking = defineStore({
       { name: '需要我為您尋找合適的people嗎?', limit: '' },
       { name: '需要我為您介紹一些可靠的people嗎?', limit: '' },
       { name: '需要我幫您找people嗎?', limit: '' },
+    ],
+    // 介紹人在幫忙找賣家的對話
+    introducerBuySalesTalking: [
+      { name: '我來幫忙介紹賣家吧。', limit: '' },
+      { name: '我知道人有在賣order，我來幫您介紹一下', limit: '' },
+      { name: '我可以幫您找到賣家，他們有賣order。', limit: '' },
+      { name: '我知道有賣order的人，我來為您找一下。', limit: '' },
+      { name: '我會找到賣order的人給您。', limit: '' },
+      { name: '我知道有人賣order，我來為您聯繫。', limit: '' },
+      { name: '我會找到order的人，稍等我一下。', limit: '' },
+      { name: '我知道哪裡有賣order的人，我來為您介紹吧。', limit: '' },
+      { name: '我會找到賣order的人，我來為您介紹。', limit: '' },
     ]
   }),
   actions: {
@@ -148,6 +160,10 @@ export const talking = defineStore({
       const randomItem = this.introducerHelpHireTalking[randomIndex];
       return randomItem.name.replace('people', value);
     },
-
+    getIntroducerBuySalesTalking(value) {
+      const randomIndex = Math.floor(Math.random() * this.introducerBuySalesTalking.length);
+      const randomItem = this.introducerBuySalesTalking[randomIndex];
+      return randomItem.name.replace('order', value);
+    },
   },
 });

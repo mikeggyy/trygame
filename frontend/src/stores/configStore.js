@@ -39,7 +39,7 @@ export const config = defineStore({
     // 職業
     profession: '',
     // 現在所在位置
-    currentLocation: 'home',
+    currentLocation: 'home-001',
     // 現在時間
     date: new Date('1688-01-01'), // 初始日期为 '1688-01-01',
     // 遊戲進行中嗎
@@ -136,12 +136,15 @@ export const config = defineStore({
       // 更新date的值，这将触发Vue的响应式系统
       this.date = new Date(currentDate);
     },
+    // 時間是否開始跑動
     setTimeStart(value) {
       this.isTimeStart = value
     },
+    // 設定商品
     setSalesList(data) {
       this.salesList = data
     },
+    // 設定員工
     setEmployees(item) {
       this.allEmployees.push(item)
     },
@@ -188,5 +191,9 @@ export const config = defineStore({
       this.allEmployees[index].profession = value;
       this.allEmployees[index].type = value;
     },
+    // 設定場景
+    setCurrentLocation(value) {
+      this.currentLocation = value
+    }
   },
 });
