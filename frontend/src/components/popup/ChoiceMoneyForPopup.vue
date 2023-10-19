@@ -1,22 +1,26 @@
 <script setup>
-// import ChoiceMoney from '@/components/popup/ChoiceMoney.vue'
+// import ChoiceMoneyForPopup from '@/components/popup/ChoiceMoneyForPopup.vue'
 import TitleForPopup from '@/components/popup/TitleForPopup.vue';
 import DescriptionForPopup from '@/components/popup/DescriptionForPopup.vue'
 import { popupState, config } from '@/stores'
 import { ref } from 'vue';
 const emits = defineEmits();
-const { isPrivateMoney, MaxlimitMoney, MinlimitMoney } = defineProps({
+const { isPrivateMoney, MaxlimitMoney, MinlimitMoney, title } = defineProps({
     MaxlimitMoney: {
-        type: Number, // 定义 prop 的类型
-        default: 50 // 默认值，如果父组件没有传递该 prop
+        type: Number,
+        default: 50
     },
     MinlimitMoney: {
-        type: Number, // 定义 prop 的类型
-        default: 1 // 默认值，如果父组件没有传递该 prop
+        type: Number,
+        default: 1
     },
     isPrivateMoney: {
-        type: Boolean, // 定义 prop 的类型
-        default: false // 默认值，如果父组件没有传递该 prop
+        type: Boolean,
+        default: false
+    },
+    title: {
+        type: String,
+        default: '選擇金額'
     }
 });
 const money = ref(1)
@@ -87,7 +91,7 @@ const handleCancel = () => {
 <template>
     <div class="ChoiceMoney">
         <div class="main__content">
-            <TitleForPopup name="選擇金額" @close="popupState().setChoiceMoney(false)" />
+            <TitleForPopup :name="title" @close="popupState().setChoiceMoney(false)" />
             <div class="zone__content">
                 <div class="wrap__money">
                     <div class="money">{{ money }}両</div>

@@ -1,10 +1,5 @@
-// import { toHire } from '@/unit/toHire.js';
-import { config, popupState, people } from '@/stores';
-
-// 選中招募類型
-export const toHire = (item) => {
-  popupState().setHireType(item);
-};
+// import {  } from '@/unit/toHire.js';
+import { config, people } from '@/stores';
 
 // 介紹人推薦對象
 export const introducerPush = (value = "雜工") => {

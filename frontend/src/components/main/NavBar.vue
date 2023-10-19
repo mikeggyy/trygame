@@ -2,7 +2,6 @@
 import { navBar, popupState, config } from '@/stores';
 import { ref } from 'vue';
 import { toWork } from '@/unit/toWork.js'; // 导入 toWork 函数
-import { toHire } from '@/unit/toHire.js';
 const navBarStore = navBar();
 const navList = ref(navBarStore.navList);
 const activeIndex = ref(null); // 用於追蹤當前啟用的菜單項索引
@@ -43,8 +42,11 @@ const subItemHandle2 = (item) => {
     case '工作':
       toWork(item.value)
       break;
+    case '資金移動':
+      popupState().setMoveMoney(item.name);
+      break;
     case '雇用員工':
-      toHire(item.name)
+      popupState().setHireType(item.name);
       break;
     case '新遊戲':
       break;

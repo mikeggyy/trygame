@@ -10,6 +10,7 @@ import FamilyInfo from '@/components/windows/FamilyInfo.vue'
 import SalesInfo from '@/components/windows/SalesInfo.vue'
 import Stock from '@/components/windows/Stock.vue'
 import Audio from '@/components/audio/Audio.vue'
+import MoveMoney from '@/components/navbarFn/MoveMoney.vue';
 import { config, popupState } from '@/stores';
 import { ref } from 'vue';
 </script>
@@ -43,6 +44,9 @@ import { ref } from 'vue';
       <!-- 傳喚視窗 -->
       <div v-if="popupState().meetStaffType != ''">
         <MeetStaff />
+      </div>
+      <div v-if="popupState().moveMoney != ''">
+        <MoveMoney />
       </div>
     </div>
   </div>
