@@ -16,11 +16,28 @@ const content = ref('')
 const isHireOK = ref(false)
 // 是否達到招募上限
 const isLimit = ref(false)
+// 招募限制
+const limitLength = ref(0)
 // 需要介紹人介紹嗎
 const introducerCheck = config().introducerSize > 0 ? ref(true) : ref(false);
 // 檢查招募人數是否達到上限
 const checkEmployeesLimit = () => {
-  if (config().allEmployees.filter(item => item.type == popupState().hireType).length >= config().introducerLimit) {
+  switch (popupState().hireType) {
+    case '介紹人':
+      limitLength.value=config().introducerLimit
+      break;
+    case '雜工':
+      limitLength.value=config().laborerLimit
+      break;
+    case '保鑣':
+      limitLength.value=config().bodyguardLimit
+      break;
+    case '船長':
+      limitLength.value=config().shipManLimit
+      break;
+
+  }
+  if (config().allEmployees.filter(item => item.type == popupState().hireType).length >= limitLength.value) {
     isLimit.value = true
   }
 }
