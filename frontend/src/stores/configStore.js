@@ -4,7 +4,7 @@ import { defineStore } from 'pinia'
 export const config = defineStore({
   id: 'config',
   state: () => ({
-    name: '江戶商',
+    name: '織田信長',
     age: 20,
     // 創業幾年
     afterYears: 0,
@@ -194,6 +194,11 @@ export const config = defineStore({
     // 設定場景
     setCurrentLocation(value) {
       this.currentLocation = value
+    },
+    // 新增商品到貨物清單
+    addSalesList(name, value) {
+      const existingProduct = this.salesList.find(product => product.name === name);
+      existingProduct.value += value;
     }
   },
 });

@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 export const product = defineStore({
   id: 'product',
   state: () => ({
-    dataList: [
+    productList: [
       { name: '鯛魚', value: 0, orderId: 1, minMoney: 0.84, maxMoney: 1.67, averageMoney: 1.17 },
       { name: '鮪魚', value: 0, orderId: 2, minMoney: 0.67, maxMoney: 1.34, averageMoney: 1.0 },
       { name: '鯖魚', value: 0, orderId: 3, minMoney: 0.5, maxMoney: 1.0, averageMoney: 0.67 },
@@ -61,6 +61,9 @@ export const product = defineStore({
     ]
   }),
   actions: {
-
+    getProductItem(name) {
+      const foundProduct = this.productList.find(item => item.name === name);
+      return foundProduct || null;
+    },
   },
 });

@@ -6,8 +6,15 @@ export const people = defineStore({
   id: 'people',
   state: () => ({
     // 角色清單
-    peopleList: []
+    peopleList: [],
   }),
+  getters: {
+    // 黑市商人
+    blackMarketeerList(state) {
+      return state.peopleList.filter(people => people.type === '黑市商人');
+    },
+
+  },
   actions: {
     /**
      * 获取創建角色列表并将数据存储到 `peopleList` 属性中。

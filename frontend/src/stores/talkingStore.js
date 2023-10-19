@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-
+import { config } from '@/stores'
 export const talking = defineStore({
   id: 'talking',
   state: () => ({
@@ -107,7 +107,41 @@ export const talking = defineStore({
       { name: '我會找到order的人，稍等我一下。', limit: '' },
       { name: '我知道哪裡有賣order的人，我來為您介紹吧。', limit: '' },
       { name: '我會找到賣order的人，我來為您介紹。', limit: '' },
-    ]
+    ],
+    // 黑市商人賣貨的對話
+    blackMarketeerSellSalesTalking: [
+      { name: '這裡有count貫order，一共是money両。myName有興趣嗎?', limit: '' },
+      { name: '我這邊有count貫order，共計是money両。myName要的話賣你?', limit: '' },
+      { name: '我剛進貨的order有count貫，一共是money両。myName要不要買?', limit: '' },
+      { name: 'myName，我這批order有count貫，總共是money両。怎麼樣?', limit: '' },
+      { name: '這些order有count貫，一共是money両。myName有需要嗎?', limit: '' },
+      { name: '我這裡有count貫order，共計是money両。myName要買回去嗎?', limit: '' },
+      { name: '我這裡有一些order總共有count貫，一共是money両。myName要買嗎?', limit: '' },
+      { name: 'myName，這些order有count貫，共計是money両。如何?', limit: '' },
+      { name: '最近批的order有count貫，一共是money両。myName要不要考慮一下?', limit: '' },
+    ],
+      // 黑市商人賣貨成功的對話
+      blackMarketeerSellSalesOKTalking: [
+        { name: 'myName，你這次算是撿了便宜，下次可不會這麼容易了。', limit: '' },
+        { name: 'myName，希望你拿著這個東西能夠值回票價', limit: '' },
+        { name: '你真是個會做生意的人，我喜歡和你這樣的客戶交易。', limit: '' },
+        { name: '這可是最後一批了，別讓其他人知道我給你了這麼好的價格。', limit: '' },
+        { name: 'myName，這次的交易算是互惠互利，希望我們今後還能有更多合作。', limit: '' },
+        { name: '你能買到這批貨真是幸運，我可不會輕易把它交給別人。', limit: '' },
+        { name: 'myName，希望我們以後能夠更順利地合作。', limit: '' },
+        { name: 'myName，你是個精明的生意人，能和你合作是我的榮幸。', limit: '' },
+      ],
+      // 黑市商人賣貨失敗的對話
+      blackMarketeerSellSalesNoTalking: [
+        { name: 'myName，你在浪費我時間...', limit: '' },
+        { name: 'myName，我已經給了你最好的價格...', limit: '' },
+        { name: '我的貨物可不是給隨便什麼人的...', limit: '' },
+        { name: '我可不會再等你了，如果你不能買，別人會的...', limit: '' },
+        { name: 'myName，別以為你是唯一想要這個貨物的人，你不買我就賣給別人了...', limit: '' },
+        { name: '不買就趕緊走吧，別浪費我的時間...', limit: '' },
+        { name: 'myName，你要是買不起就別硬湊熱鬧...', limit: '' },
+        { name: 'myName，我可沒有時間跟你耗...', limit: '' },
+      ],
   }),
   actions: {
     getCheckMoneyTalking(value = 666) {
@@ -164,6 +198,21 @@ export const talking = defineStore({
       const randomIndex = Math.floor(Math.random() * this.introducerBuySalesTalking.length);
       const randomItem = this.introducerBuySalesTalking[randomIndex];
       return randomItem.name.replace('order', value);
+    },
+    getBlackMarketeerSellSalesTalking(count,order,money){
+      const randomIndex = Math.floor(Math.random() * this.blackMarketeerSellSalesTalking.length);
+      const randomItem = this.blackMarketeerSellSalesTalking[randomIndex];
+      return randomItem.name.replace('count', count).replace('order', order).replace('money', money).replace('myName', config().name);
+    },
+    getBlackMarketeerSellSalesOKTalking(){
+      const randomIndex = Math.floor(Math.random() * this.blackMarketeerSellSalesOKTalking.length);
+      const randomItem = this.blackMarketeerSellSalesOKTalking[randomIndex];
+      return randomItem.name.replace('myName', config().name);
+    },
+    getBlackMarketeerSellSalesNoTalking(){
+      const randomIndex = Math.floor(Math.random() * this.blackMarketeerSellSalesNoTalking.length);
+      const randomItem = this.blackMarketeerSellSalesNoTalking[randomIndex];
+      return randomItem.name.replace('myName', config().name);
     },
   },
 });

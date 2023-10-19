@@ -37,7 +37,9 @@ const { peopleItem, content } = defineProps({
   top: 80px;
   left: 50px;
   z-index: 300;
-
+  *{
+    cursor: default;
+  }
   .zone__talk {
     width: 400px;
     height: 200px;

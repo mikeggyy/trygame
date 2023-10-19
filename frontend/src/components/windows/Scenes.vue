@@ -8,6 +8,8 @@ const placeName = (name) => {
   switch (name) {
     case 'home-001':
       return '自宅'
+    case 'room-001':
+      return '黑市商人宅邸'
   }
 }
 

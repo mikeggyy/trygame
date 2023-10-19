@@ -1,34 +1,86 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import SelectForPopup from '@/components/popup/SelectForPopup.vue';
 import TitleForPopup from '@/components/popup/TitleForPopup.vue';
+import ClickSpaceForPopup from '@/components/popup/ClickSpaceForPopup.vue';
 import DescriptionForPopup from '@/components/popup/DescriptionForPopup.vue'
 import TalkForPopup from '@/components/popup/TalkForPopup.vue'
-import { config, popupState, talking } from '@/stores'
+import YesOrNoForPopup from '@/components/popup/YesOrNoForPopup.vue'
+import { config, popupState, talking,people,product } from '@/stores'
 const talkingCount = ref(0)
+// 買入商品
 const orderItem = ref({})
+// 黑市商人
+const blackMarketeerItem = ref({})
+const blackTalking = ref(null)
+// 買入確定
 const handleSalesOk = (item) => {
   talkingCount.value = 1
-  console.log(item);
   orderItem.value = item
-  config().setCurrentLocation('room-001')
 }
+
+// 黑市貨物數量
+const blackCount = ref(0)
+// 貨物價格
+const blackMoney = ref(0)
+// 買入取消
 const handleSalesCancel = () => {
   popupState().setBuySales(false)
 }
+// 關閉介紹人對話
+const closeIntroducerTalking = () =>{
+  // 隨機黑市商品數量
+  blackCount.value = Math.floor(Math.random() * 1500) + 500;
+  // 黑市價格
+  blackMoney.value = Math.ceil(((orderItem.value.maxMoney + orderItem.value.averageMoney) / 2) * blackCount.value);
+  let randomBlackValue = Math.floor(Math.random() * 10) + 1;
+  blackMarketeerItem.value = people().blackMarketeerList.find(person => person.id == randomBlackValue);
+  blackTalking.value = talking().getBlackMarketeerSellSalesTalking(blackCount.value,orderItem.value.name,blackMoney.value)
+  talkingCount.value = 2
+  config().setCurrentLocation('room-001')
+}
+// 買入商品
+const handleYes = ()=>{
+  blackTalking.value = talking().getBlackMarketeerSellSalesOKTalking()
+  config().setTotalAssets(-blackMoney.value)
+  config().addSalesList(orderItem.value.name,blackCount.value)
+  talkingCount.value = 3
+}
+// 不買入商品
+const handleNo = ()=>{
+  blackTalking.value = talking().getBlackMarketeerSellSalesNoTalking()
+  talkingCount.value = 3
+}
+// 結束與黑市商人交易
+const closeBlackMarketeerTalk = ()=>{
+  config().setCurrentLocation('home-001')
+  popupState().buySales = false
+}
+
 </script>
 <template>
   <div class="BuySales">
     <div v-if="config().introducerSize == 0">
       <DescriptionForPopup :title="`買入商品`" :content="`需要介紹人來幫忙買貨`" @cancel="popupState().setBuySales(false)" />
     </div>
-    <div v-else class="zone__select">
+    <div v-else-if="talkingCount < 1" class="zone__select">
       <TitleForPopup :name="`買入`" />
       <SelectForPopup :dataList="config().salesList" @ok="handleSalesOk" @cancel="handleSalesCancel" />
     </div>
     <div v-if="talkingCount == 1">
       <TalkForPopup :peopleItem="config().introducerItem"
         :talking="talking().getIntroducerBuySalesTalking(orderItem.name)" />
+      <ClickSpaceForPopup @close="closeIntroducerTalking" />
+    </div>
+    <div v-if="talkingCount > 1">
+      <TalkForPopup :peopleItem="blackMarketeerItem"
+        :talking="blackTalking" />
+    </div>
+    <div v-if="talkingCount == 2">
+      <YesOrNoForPopup :title="`是否買入${orderItem.name}`" @yes="handleYes" @no="handleNo"/>
+    </div>
+    <div v-if="talkingCount == 3">
+      <ClickSpaceForPopup @close="closeBlackMarketeerTalk" />
     </div>
   </div>
 </template>
