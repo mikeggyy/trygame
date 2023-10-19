@@ -92,6 +92,11 @@ export const config = defineStore({
     introducerSize(state) {
       return state.allEmployees.filter(employee => employee.type === '介紹人').length;
     },
+    // 介紹人是哪位
+    introducerItem(state) {
+      const introducer = state.allEmployees.find(employee => employee.type === '介紹人');
+      return introducer || null;
+    },
   },
   actions: {
     setName(name) {
@@ -182,6 +187,6 @@ export const config = defineStore({
       }
       this.allEmployees[index].profession = value;
       this.allEmployees[index].type = value;
-    }
+    },
   },
 });

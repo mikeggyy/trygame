@@ -83,6 +83,18 @@ export const talking = defineStore({
       { name: '我會保持努力，不讓您失望的，老板。謝謝您的信任！', limit: '' },
       { name: '感謝您的支持，老板。我會更加努力的！', limit: '' },
       { name: '我會珍惜這個機會，老板。謝謝您的提拔！', limit: '' },
+    ],
+    // 介紹人在介紹對象時的對話
+    introducerHelpHireTalking: [
+      { name: '需要我幫忙介紹people嗎?', limit: '' },
+      { name: '需要我為您介紹people嗎?', limit: '' },
+      { name: '需要我為您找people嗎?', limit: '' },
+      { name: '需要我為您尋找people嗎?', limit: '' },
+      { name: '需要我為您引薦people嗎?', limit: '' },
+      { name: '需要我幫您介紹people嗎?', limit: '' },
+      { name: '需要我為您尋找合適的people嗎?', limit: '' },
+      { name: '需要我為您介紹一些可靠的people嗎?', limit: '' },
+      { name: '需要我幫您找people嗎?', limit: '' },
     ]
   }),
   actions: {
@@ -130,6 +142,11 @@ export const talking = defineStore({
       const randomIndex = Math.floor(Math.random() * this.upShopkeeperTalking.length);
       const randomItem = this.upShopkeeperTalking[randomIndex];
       return randomItem.name
+    },
+    getIntroducerHelpHireTalking(value) {
+      const randomIndex = Math.floor(Math.random() * this.introducerHelpHireTalking.length);
+      const randomItem = this.introducerHelpHireTalking[randomIndex];
+      return randomItem.name.replace('people', value);
     },
 
   },

@@ -4,6 +4,8 @@ import SelectForPopup from '@/components/popup/SelectForPopup.vue';
 import TalkForPopup from '@/components/popup/TalkForPopup.vue';
 import DescriptionForPopup from '@/components/popup/DescriptionForPopup.vue'
 import ClickSpaceForPopup from '@/components/popup/ClickSpaceForPopup.vue'
+import YesOrNoForPopup from '@/components/popup/YesOrNoForPopup.vue'
+import { introducerPush } from '@/unit/toHire.js';
 import { config, popupState, people, select, talking } from '@/stores';
 import { ref } from 'vue';
 const peopleData = ref([])
@@ -12,32 +14,15 @@ const isReviews = ref(false)
 const peopleItem = ref({})
 const content = ref('')
 const isHireOK = ref(false)
+// 是否達到招募上限
 const isLimit = ref(false)
+// 需要介紹人介紹嗎
+const introducerCheck = config().introducerSize > 0 ? ref(true) : ref(false);
 // 檢查招募人數是否達到上限
 const checkEmployeesLimit = () => {
-  switch (popupState().hireType) {
-    case '介紹人':
-      if (config().allEmployees.filter(item => item.type == '介紹人').length >= config().introducerLimit) {
-        isLimit.value = true
-      }
-      break;
-    case '雜工':
-      if (config().allEmployees.filter(item => item.type == '雜工').length >= config().laborerLimit) {
-        isLimit.value = true
-      }
-      break;
-    case '保鑣':
-      if (config().allEmployees.filter(item => item.type == '保鑣').length >= config().bodyguardLimit) {
-        isLimit.value = true
-      }
-      break;
-    case '船長':
-      if (config().allEmployees.filter(item => item.type == '保鑣').length >= config().shipManLimit) {
-        isLimit.value = true
-      }
-      break;
+  if (config().allEmployees.filter(item => item.type == popupState().hireType).length >= config().introducerLimit) {
+    isLimit.value = true
   }
-
 }
 // 在 setup 函數中進行初始化操作
 const populateNewPeopleList = () => {
@@ -69,38 +54,60 @@ const handleHireCancel = () => {
   content.value = ''
 }
 // 招募完成最後一次對話
-const closeClickSpace = () => {
+const closeClickSpaceHireOK = () => {
   peopleItem.value.profession = popupState().hireType
   config().setEmployees(peopleItem.value)
   people().removePeopleList(peopleItem.value.name)
   popupState().setHireType('')
 }
+// 請介紹人推薦
+const handleYesIntroducer = () => {
+  introducerCheck.value = false
+  peopleItem.value = introducerPush(popupState().hireType)
+  isHireCheck.value = true
+}
+// 不用介紹人推薦
+const handleNoIntroducer = () => {
+  introducerCheck.value = false
+}
+
 // 初始化時調用
 checkEmployeesLimit();
 populateNewPeopleList();
 </script>
 <template>
   <div class="Hire">
-    <div class="zone__select" v-show="isHireCheck == false && isLimit == false">
-      <TitleForPopup :name="`雇用${popupState().hireType}`" :showCloseBtn="false" />
-      <SelectForPopup :dataList="peopleData" @ok="handlePeopleOk" @cancel="handlePeopleCancel" />
-    </div>
+    <!-- 超過招募上限 -->
     <div v-if="isLimit == true">
       <DescriptionForPopup :title="`雇用${popupState().hireType}`" :content="`${popupState().hireType}雇用已達最大限制`"
         @cancel="popupState().setHireType('')" />
     </div>
-    <div v-if="isHireCheck == true">
-      <TalkForPopup :peopleItem="peopleItem" :talking="content" />
-      <div v-if="isHireOK == true">
-        <ClickSpaceForPopup @close="closeClickSpace" />
+    <!-- 沒超過招募上限 -->
+    <div v-else>
+      <!-- 介紹人來推薦 -->
+      <div v-if="introducerCheck == true">
+        <TalkForPopup :peopleItem="config().introducerItem"
+          :talking="talking().getIntroducerHelpHireTalking(popupState().hireType)" />
+        <YesOrNoForPopup :title="`需要幫忙介紹${popupState().hireType}嗎`" @yes="handleYesIntroducer" @no="handleNoIntroducer" />
       </div>
-      <div class="zone__check" v-if="isHireOK == false">
+      <!-- 沒介紹人的話直接選 -->
+      <div class="zone__select" v-else-if="isHireCheck == false && isLimit == false">
         <TitleForPopup :name="`雇用${popupState().hireType}`" :showCloseBtn="false" />
-        <div>
-          <SelectForPopup :dataList="select().hireSelect" @ok="handleHireOk" @cancel="handleHireCancel" />
+        <SelectForPopup :dataList="peopleData" @ok="handlePeopleOk" @cancel="handlePeopleCancel" />
+      </div>
+      <div v-else-if="isHireCheck == true">
+        <TalkForPopup :peopleItem="peopleItem" :talking="content" />
+        <div v-if="isHireOK == true">
+          <ClickSpaceForPopup @close="closeClickSpaceHireOK" />
         </div>
-        <div v-if="isReviews == true">
-          <DescriptionForPopup :title="`傳聞`" :content="peopleItem.description" @cancel="isReviews = false" />
+        <div class="zone__check" v-if="isHireOK == false">
+          <TitleForPopup :name="`雇用${popupState().hireType}`" :showCloseBtn="false" />
+          <div>
+            <SelectForPopup :dataList="select().hireSelect" @ok="handleHireOk" @cancel="handleHireCancel" />
+          </div>
+          <div v-if="isReviews == true">
+            <DescriptionForPopup :title="`傳聞`" :content="peopleItem.description" @cancel="isReviews = false" />
+          </div>
         </div>
       </div>
     </div>
