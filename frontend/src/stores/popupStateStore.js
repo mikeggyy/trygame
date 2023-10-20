@@ -17,10 +17,12 @@ export const popupState = defineStore({
     choiceMoney: false,
     // 描述彈窗
     description: false,
+    // 建造
+    buildType:'',
     // 資金移動
     moveMoney: '',
     // 買入
-    buySales: false
+    buySales: false,
   }),
   actions: {
     setNewGame(value) {
@@ -48,6 +50,9 @@ export const popupState = defineStore({
           this[key] = false; // 将属性设为 false
         }
       });
+    },
+    setBuildType(value) {
+      this.buildType = value
     },
     setMoveMoney(value) {
       this.moveMoney = value

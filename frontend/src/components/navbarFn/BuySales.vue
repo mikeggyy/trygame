@@ -7,6 +7,7 @@ import DescriptionForPopup from '@/components/popup/DescriptionForPopup.vue'
 import TalkForPopup from '@/components/popup/TalkForPopup.vue'
 import YesOrNoForPopup from '@/components/popup/YesOrNoForPopup.vue'
 import { config, popupState, talking,people,product } from '@/stores'
+// 對話數量來控制進度
 const talkingCount = ref(0)
 // 買入商品
 const orderItem = ref({})
@@ -29,30 +30,42 @@ const handleSalesCancel = () => {
 }
 // 關閉介紹人對話
 const closeIntroducerTalking = () =>{
-  // 隨機黑市商品數量
-  blackCount.value = Math.floor(Math.random() * 1500) + 500;
-  // 黑市價格
-  blackMoney.value = Math.ceil(((orderItem.value.maxMoney + orderItem.value.averageMoney) / 2) * blackCount.value);
+  // 隨機黑市商人
   let randomBlackValue = Math.floor(Math.random() * 10) + 1;
   blackMarketeerItem.value = people().blackMarketeerList.find(person => person.id == randomBlackValue);
+  // 隨機黑市商品數量
+  blackCount.value = Math.floor(Math.random() * 1500) + 500;
+  // 好感度影響最大價格
+  let blackHowMuchLike = ((1100 - blackMarketeerItem.value.howMuchLike) / 10000)+0.9
+  // 黑市價格 最大+最小*好感/2 *商品數量
+  blackMoney.value = Math.ceil((((orderItem.value.maxMoney + orderItem.value.averageMoney)*blackHowMuchLike) / 2) * blackCount.value);
+  // 黑市商人對話
   blackTalking.value = talking().getBlackMarketeerSellSalesTalking(blackCount.value,orderItem.value.name,blackMoney.value)
   talkingCount.value = 2
   config().setCurrentLocation('room-001')
 }
 // 買入商品
 const handleYes = ()=>{
+  // 切換對話
   blackTalking.value = talking().getBlackMarketeerSellSalesOKTalking()
+  // 交易成功加好感
+  people().setPeopleListHowMuchLike(blackMarketeerItem.value.name,100)
+  // 扣金主錢
   config().setTotalAssets(-blackMoney.value)
+  // 增加商品數量
   config().addSalesList(orderItem.value.name,blackCount.value)
   talkingCount.value = 3
 }
 // 不買入商品
 const handleNo = ()=>{
   blackTalking.value = talking().getBlackMarketeerSellSalesNoTalking()
+  // 交易失敗扣好感
+  people().setPeopleListHowMuchLike(blackMarketeerItem.value.name,-100)
   talkingCount.value = 3
 }
 // 結束與黑市商人交易
 const closeBlackMarketeerTalk = ()=>{
+  // 切換場景
   config().setCurrentLocation('home-001')
   popupState().buySales = false
 }

@@ -1,24 +1,29 @@
 <script setup>
 import { navBar, popupState, config } from '@/stores';
 import { ref } from 'vue';
-import { toWork } from '@/unit/toWork.js'; // 导入 toWork 函数
+import { toWork } from '@/unit/toWork.js';
 const navBarStore = navBar();
 const navList = ref(navBarStore.navList);
-const activeIndex = ref(null); // 用於追蹤當前啟用的菜單項索引
+// 用於追蹤當前啟用的菜單項索引
+const activeIndex = ref(null); 
 const subIndex = ref(null);
+// 設定當前啟用的菜單項索引為傳入的 index
 const setActiveIndex = (index) => {
-  activeIndex.value = index; // 設定當前啟用的菜單項索引為傳入的 index
+  activeIndex.value = index; 
 }
+// 重設當前啟用的菜單項索引為 null，關閉所有子菜單
 const clearActiveIndex = () => {
-  activeIndex.value = null; // 重設當前啟用的菜單項索引為 null，關閉所有子菜單
+  activeIndex.value = null;
 }
+// 設定當前啟用的菜單項索引為傳入的 index
 const setSubIndex = (index) => {
-  subIndex.value = index; // 設定當前啟用的菜單項索引為傳入的 index
+  subIndex.value = index; 
 }
+// 重設當前啟用的菜單項索引為 null，關閉所有子菜單
 const clearSubIndex = (index) => {
-  subIndex.value = null; // 重設當前啟用的菜單項索引為 null，關閉所有子菜單
+  subIndex.value = null; 
 }
-
+// 第一選單
 const subItemHandle = (item) => {
   activeIndex.value = null;
   switch (item.fn) {
@@ -39,11 +44,15 @@ const subItemHandle = (item) => {
       break;
   }
 }
+// 第二選單
 const subItemHandle2 = (item) => {
   activeIndex.value = null;
   switch (item.fn) {
     case '工作':
       toWork(item.value)
+      break;
+    case '建造':
+      popupState().setBuildType(item.name);
       break;
     case '資金移動':
       popupState().setMoveMoney(item.name);

@@ -42,6 +42,13 @@ export const navBar = defineStore({
           { name: '外出', show: true },
           { name: '買入', fn: '買入', show: true },
           { name: '賣掉', show: true },
+          { name: '建造', show: true,
+            list2: [
+              { name: '建造船隻', fn: '建造', value: 1, show: true },
+              { name: '建造庭院', fn: '建造', value: 2, show: true },
+              { name: '建造倉庫', fn: '建造', value: 3, show: true },
+            ]
+          },
           {
             name: '資金移動', show: true,
             list2: [

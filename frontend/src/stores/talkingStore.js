@@ -142,6 +142,25 @@ export const talking = defineStore({
         { name: 'myName，你要是買不起就別硬湊熱鬧...', limit: '' },
         { name: 'myName，我可沒有時間跟你耗...', limit: '' },
       ],
+      // 木工建設確認中對話
+      woodWorkBuildCheckTalking: [
+        { name: '您要build嗎？交給我來完成，money両就好。', limit: '' },
+        { name: '老板，我會為你build，money両可以嗎。', limit: '' },
+        { name: 'build嗎？這是我的專長，money両可以接受嗎。', limit: '' },
+        { name: '想要build嗎？交給我來搞定，只需要money両就可以了。', limit: '' },
+      ],
+      // 木工建設確認OK對話
+      woodWorkBuildOkTalking: [
+        { name: '老板，請等候day天，就放心交給我吧!', limit: '' },
+        { name: '靜候佳音，請等候day天，我會用心為你為你建造的!', limit: '' },
+        { name: '等候day天後完工的消息吧，我將為您用心建造。', limit: '' },
+        { name: '即將開始建造，預計day天能完成，老板等候我的好消息吧!', limit: '' },
+      ],
+      // 木工建設確認No對話
+      woodWorkBuildNoTalking: [
+        { name: '這是在浪費我時間吧...', limit: '' },
+        { name: '確定不再考慮考慮嗎...', limit: '' },
+      ],
   }),
   actions: {
     getCheckMoneyTalking(value = 666) {
@@ -214,5 +233,21 @@ export const talking = defineStore({
       const randomItem = this.blackMarketeerSellSalesNoTalking[randomIndex];
       return randomItem.name.replace('myName', config().name);
     },
+    getWoodWorkBuildCheckTalking(build,money){
+      const randomIndex = Math.floor(Math.random() * this.woodWorkBuildCheckTalking.length);
+      const randomItem = this.woodWorkBuildCheckTalking[randomIndex];
+      return randomItem.name.replace('build', build).replace('money', money);
+    },
+    getWoodWorkBuildOkTalking(day){
+      const randomIndex = Math.floor(Math.random() * this.woodWorkBuildOkTalking.length);
+      const randomItem = this.woodWorkBuildOkTalking[randomIndex];
+      return randomItem.name.replace('day', day)
+    },
+    getWoodWorkBuildNoTalking(){
+      const randomIndex = Math.floor(Math.random() * this.woodWorkBuildNoTalking.length);
+      const randomItem = this.woodWorkBuildNoTalking[randomIndex];
+      return randomItem.name
+    },
+    
   },
 });

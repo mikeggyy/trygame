@@ -11,7 +11,9 @@ import { ref } from 'vue';
 const peopleData = ref([])
 const isHireCheck = ref(false)
 const isReviews = ref(false)
+// 選中的人
 const peopleItem = ref({})
+// 對話內容
 const content = ref('')
 const isHireOK = ref(false)
 // 是否達到招募上限
@@ -45,12 +47,14 @@ const checkEmployeesLimit = () => {
 const populateNewPeopleList = () => {
   peopleData.value = people().peopleList.filter(item => (item.type === popupState().hireType && item.age > 15));
 }
-const handlePeopleCancel = () => {
-  popupState().setHireType('')
-}
+// 自己招募
 const handlePeopleOk = (item) => {
   isHireCheck.value = true
   peopleItem.value = item
+}
+// 取消招募視窗
+const handlePeopleCancel = () => {
+  popupState().setHireType('')
 }
 const handleHireOk = (item) => {
   switch (item.value) {

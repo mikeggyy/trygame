@@ -4,7 +4,7 @@ import { defineStore } from 'pinia'
 export const config = defineStore({
   id: 'config',
   state: () => ({
-    name: '織田信長',
+    name: '金田一',
     age: 20,
     // 創業幾年
     afterYears: 0,
@@ -36,6 +36,8 @@ export const config = defineStore({
     totalAssets: 12000,
     // 貨物清單
     salesList: [],
+    // 建造列表
+    buildingList:[],
     // 職業
     profession: '',
     // 現在所在位置
@@ -166,7 +168,7 @@ export const config = defineStore({
     setPrivateMoney(num) {
       this.privateMoney = this.privateMoney + num
     },
-    // 設定某人好感度
+    // 設定某員工好感度
     setHowMuchLike(payload) {
       const { index, value } = payload;
       this.allEmployees[index].howMuchLike = this.allEmployees[index].howMuchLike + value;
@@ -199,6 +201,10 @@ export const config = defineStore({
     addSalesList(name, value) {
       const existingProduct = this.salesList.find(product => product.name === name);
       existingProduct.value += value;
+    },
+    // 新增建造項目
+    addBuildItem(buildMan,buildType,buildDay,buildAbility){
+      this.buildingList.push({name:buildType,day:buildDay,builder:buildMan,buildAbility:buildAbility})
     }
   },
 });

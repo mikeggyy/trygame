@@ -13,7 +13,10 @@ export const people = defineStore({
     blackMarketeerList(state) {
       return state.peopleList.filter(people => people.type === '黑市商人');
     },
-
+    // 黑市商人
+    woodWorkManList(state) {
+      return state.peopleList.filter(people => people.type === '木工');
+    },
   },
   actions: {
     /**
@@ -35,6 +38,11 @@ export const people = defineStore({
     },
     removePeopleList(value) {
       this.peopleList = this.peopleList.filter(person => person.name !== value);
+    },
+    // 設定某人好感度
+    setPeopleListHowMuchLike(name,value) {
+      const peopleListIndex = this.peopleList.findIndex(item => item.name == name);
+      this.peopleList[peopleListIndex].howMuchLike = this.peopleList[peopleListIndex].howMuchLike + value;
     },
   },
 });

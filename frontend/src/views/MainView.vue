@@ -12,6 +12,7 @@ import Stock from '@/components/windows/Stock.vue'
 import Audio from '@/components/audio/Audio.vue'
 import MoveMoney from '@/components/navbarFn/MoveMoney.vue';
 import BuySales from '@/components/navbarFn/BuySales.vue';
+import Build from '@/components/navbarFn/Build.vue';
 import { config, popupState } from '@/stores';
 import { ref } from 'vue';
 </script>
@@ -28,7 +29,7 @@ import { ref } from 'vue';
         <FamilyInfo />
         <SalesInfo />
         <Stock />
-        <Audio></Audio>
+        <!-- <Audio></Audio> -->
       </div>
       <!-- 開新遊戲視窗 -->
       <div v-if="popupState().newGame == true">
@@ -46,6 +47,10 @@ import { ref } from 'vue';
       <div v-if="popupState().meetStaffType != ''">
         <MeetStaff />
       </div>
+      <!-- 建造 -->
+      <div v-if="popupState().buildType != ''">
+        <Build />
+      </div>
       <!-- 資金移動 -->
       <div v-if="popupState().moveMoney != ''">
         <MoveMoney />
@@ -54,7 +59,6 @@ import { ref } from 'vue';
       <div v-if="popupState().buySales == true">
         <BuySales />
       </div>
-
     </div>
   </div>
 </template>

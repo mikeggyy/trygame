@@ -58,7 +58,7 @@ const generateIntroducer = () => {
       health: 80,
       smuggling: false,
       limit: '',
-      headImg: 'introducer-001.png',
+      headImg: 'introducer-003.png',
       type: '介紹人',
       profession: '醫生',
       description: ''
@@ -96,9 +96,9 @@ const generateIntroducer = () => {
       health: 80,
       smuggling: true,
       limit: '',
-      headImg: 'introducer-001.png',
+      headImg: 'introducer-005.png',
       type: '介紹人',
-      profession: '御前仕從',
+      profession: '御家人',
       description: ''
     },
   ]

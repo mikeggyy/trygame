@@ -34,7 +34,7 @@ const { peopleItem, content } = defineProps({
 <style lang="scss" scoped>
 .TalkForPopup {
   position: absolute;
-  top: 80px;
+  top: 90px;
   left: 50px;
   z-index: 300;
   *{
