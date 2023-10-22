@@ -13,6 +13,8 @@ import Audio from '@/components/audio/Audio.vue'
 import MoveMoney from '@/components/navbarFn/MoveMoney.vue';
 import BuySales from '@/components/navbarFn/BuySales.vue';
 import Build from '@/components/navbarFn/Build.vue';
+import BuildEndEvent from '@/components/event/BuildEndEvent.vue';
+
 import { config, popupState } from '@/stores';
 import { ref } from 'vue';
 </script>
@@ -58,6 +60,10 @@ import { ref } from 'vue';
       <!-- 買入 -->
       <div v-if="popupState().buySales == true">
         <BuySales />
+      </div>
+      <!-- 建造完成 -->
+      <div v-if="popupState().buildEndItem !=''">
+        <BuildEndEvent />
       </div>
     </div>
   </div>

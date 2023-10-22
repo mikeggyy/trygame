@@ -72,6 +72,7 @@ const generateBodyguards = (count) => {
       profession: '武士',
       // 描述
       description: '沒落的武士',
+      status:''
     };
 
     peopleList.push(body);

@@ -57,7 +57,8 @@ function generateLaborer(count) {
       headImg: 'laborer-001.png',
       type: '雜工',
       profession: '',
-      description: '沒沒無聞的雜工'
+      description: '沒沒無聞的雜工',
+      status:''
     };
 
     peopleList.push(body);

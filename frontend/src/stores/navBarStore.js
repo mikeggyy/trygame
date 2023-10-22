@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
 import { ref } from 'vue';
 import { config } from './configStore';
 //導航列
@@ -12,7 +12,7 @@ export const navBar = defineStore({
           { name: '儲存進度', show: true, fn: '儲存進度' },
           { name: '讀取進度', show: true, fn: '讀取進度' },
           { name: '新遊戲', show: true, fn: '新遊戲' },
-        ]
+        ],
       },
       {
         name: '情報',
@@ -21,7 +21,7 @@ export const navBar = defineStore({
           // { name: '商店視窗' },
           { name: '人物表', show: true },
           { name: '帳簿', show: true },
-        ]
+        ],
       },
       {
         name: '行動',
@@ -37,24 +37,27 @@ export const navBar = defineStore({
               { name: '60日', fn: '工作', value: 60, show: true },
               { name: '一年', fn: '工作', value: 365, show: true },
               { name: '設定停止日', fn: '工作', value: 'setStop', show: true },
-            ]
+            ],
           },
           { name: '外出', show: true },
           { name: '買入', fn: '買入', show: true },
           { name: '賣掉', show: true },
-          { name: '建造', show: true,
+          {
+            name: '建造',
+            show: true,
             list2: [
               { name: '建造船隻', fn: '建造', value: 1, show: true },
               { name: '建造庭院', fn: '建造', value: 2, show: true },
               { name: '建造倉庫', fn: '建造', value: 3, show: true },
-            ]
+            ],
           },
           {
-            name: '資金移動', show: true,
+            name: '資金移動',
+            show: true,
             list2: [
               { name: '藏私房錢', fn: '資金移動', value: 1, show: true },
               { name: '返回金主', fn: '資金移動', value: 2, show: true },
-            ]
+            ],
           },
           {
             name: '雇用員工',
@@ -63,10 +66,10 @@ export const navBar = defineStore({
               { name: '雜工', fn: '雇用員工', value: 2, show: true },
               { name: '保鑣', fn: '雇用員工', value: 3, show: true },
               { name: '船長', fn: '雇用員工', value: 4, show: true },
-            ]
+            ],
           },
           // { name: '解雇員工' },
-        ]
+        ],
       },
       {
         name: '傳喚',
@@ -78,7 +81,7 @@ export const navBar = defineStore({
           { name: '保鑣', show: true, fn: '傳喚' },
           { name: '船長', show: true, fn: '傳喚' },
           { name: '妻子', show: true, fn: '傳喚' },
-        ]
+        ],
       },
       {
         name: '選項',
@@ -89,20 +92,15 @@ export const navBar = defineStore({
           { name: '變更船名', show: true },
           { name: '音樂開關', show: true },
           { name: '音效開關', show: true },
-        ]
+        ],
       },
       // {
       //   name: '視窗',
       //   list: [
       //   ]
       // },
-
-    ]
+    ],
   }),
-  getters: {
-
-  },
-  actions: {
-
-  },
+  getters: {},
+  actions: {},
 });

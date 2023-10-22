@@ -70,6 +70,7 @@ const generateWoodWorkMan = (count) => {
         type: '木工',
         profession: '木工',
         description: '沒沒無聞的木工',
+        status:''
       };
   
       peopleList.push(body);

@@ -70,6 +70,7 @@ const generateShipMan = (count) => {
       type: '船長',
       profession: '',
       description: '沒沒無聞的船長',
+      status:''
     };
 
     peopleList.push(body);

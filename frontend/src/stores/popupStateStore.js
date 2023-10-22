@@ -1,5 +1,5 @@
 // import { popupState } from '@/stores';
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
 
 //視窗狀態
 export const popupState = defineStore({
@@ -18,11 +18,13 @@ export const popupState = defineStore({
     // 描述彈窗
     description: false,
     // 建造
-    buildType:'',
+    buildType: '',
     // 資金移動
     moveMoney: '',
     // 買入
     buySales: false,
+    // 建造完成
+    buildEndItem: '',
   }),
   actions: {
     setNewGame(value) {
@@ -35,30 +37,34 @@ export const popupState = defineStore({
       this.hireType = value;
     },
     setMeetStaffType(value) {
-      this.meetStaffType = value
+      this.meetStaffType = value;
     },
     setChoiceMoney(value) {
-      this.choiceMoney = value
+      this.choiceMoney = value;
     },
     setDescription(value) {
-      this.description = value
+      this.description = value;
     },
     closeAllPopups() {
       const keys = Object.keys(this.$state); // 获取所有状态属性的键
       keys.forEach((key) => {
-        if (key !== 'id') { // 排除掉可能的特殊属性，比如 'id'
+        if (key !== 'id') {
+          // 排除掉可能的特殊属性，比如 'id'
           this[key] = false; // 将属性设为 false
         }
       });
     },
     setBuildType(value) {
-      this.buildType = value
+      this.buildType = value;
     },
     setMoveMoney(value) {
-      this.moveMoney = value
+      this.moveMoney = value;
     },
     setBuySales(value) {
-      this.buySales = value
-    }
+      this.buySales = value;
+    },
+    setBuildEndItem(item) {
+      this.buildEndItem = item;
+    },
   },
 });

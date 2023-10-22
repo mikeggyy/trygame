@@ -8,20 +8,21 @@ import SelectForPopup from '@/components/popup/SelectForPopup.vue';
 import { introducerPush } from '@/unit/toHire.js';
 import TalkForPopup from '@/components/popup/TalkForPopup.vue';
 // 造價
-const money= ref(0)
+const money= ref(0);
 // 選中的人
-const peopleItem = ref({})
+const peopleItem = ref({});
 // 對話內容
-const content = ref('')
+const content = ref('');
 // 結束建造事件
-const closeThisEvent = ref(false)
+const closeThisEvent = ref(false);
 // 確定使用這個人
-const isHireOK = ref(false)
-const buildDay = ref(0)
+const isHireOK = ref(false);
+// 建造天數
+const buildDay = ref(0);
 // 需要介紹人介紹嗎
 const introducerCheck = config().introducerSize > 0 ? ref(true) : ref(false);
 // 確認使用這個人
-const isHireCheck = ref(false)
+const isHireCheck = ref(false);
 // 金錢數量 建造工時
 const initData = () =>{
     switch (popupState().buildType) {
@@ -65,15 +66,33 @@ const handleWoodWorkOk = (item)=>{
 const handleWoodWorkCancel = ()=>{
     popupState().setBuildType('')
 }
-
+const checkAndSetBuildDay = () =>{
+    // 檢查有沒有重複的天數
+    let count = 1;
+    let isUnique = false;
+    while (!isUnique) {
+        isUnique = true;
+        for (const buildItem of config().buildingList) {
+            if (buildItem.day === buildDay.value) {
+                isUnique = false;
+                buildDay.value += count;
+                count++;
+                break;
+            }
+        }
+    }
+}
 // 建造
 const handleYesBuild = ()=>{
     // 切換對話
     content.value = talking().getWoodWorkBuildOkTalking(buildDay.value)
     // 交易成功加好感
     people().setPeopleListHowMuchLike(peopleItem.value.name,100)
+    // 將木工狀態設為建造中
+    people().setPeopleListStatus(peopleItem.value.name,'建造中')
     // 扣金主錢
     config().setTotalAssets(-money.value)
+    checkAndSetBuildDay();
     // 項目進入建設清單
     config().addBuildItem(peopleItem.value.name,popupState().buildType,buildDay.value,peopleItem.value.ability)
     closeThisEvent.value=true
@@ -107,7 +126,7 @@ const closeWoodWorkMan = ()=>{
       <div v-else-if="isHireCheck == true">
         <TalkForPopup :peopleItem="peopleItem" :talking="content" />
         <div v-if="isHireOK == true">
-            <YesOrNoForPopup :title="`需要幫忙介紹木工嗎`" @yes="handleYesBuild" @no="handleNoBuild" />
+            <YesOrNoForPopup :title="`請他${popupState().buildType}嗎?`" @yes="handleYesBuild" @no="handleNoBuild" />
         </div>
         <div v-if="closeThisEvent == true">
             <ClickSpaceForPopup @close="closeWoodWorkMan" />

@@ -1,5 +1,5 @@
-import { defineStore } from 'pinia'
-import { config } from '@/stores'
+import { defineStore } from 'pinia';
+import { config } from '@/stores';
 export const talking = defineStore({
   id: 'talking',
   state: () => ({
@@ -111,143 +111,240 @@ export const talking = defineStore({
     // 黑市商人賣貨的對話
     blackMarketeerSellSalesTalking: [
       { name: '這裡有count貫order，一共是money両。myName有興趣嗎?', limit: '' },
-      { name: '我這邊有count貫order，共計是money両。myName要的話賣你?', limit: '' },
-      { name: '我剛進貨的order有count貫，一共是money両。myName要不要買?', limit: '' },
-      { name: 'myName，我這批order有count貫，總共是money両。怎麼樣?', limit: '' },
+      {
+        name: '我這邊有count貫order，共計是money両。myName要的話賣你?',
+        limit: '',
+      },
+      {
+        name: '我剛進貨的order有count貫，一共是money両。myName要不要買?',
+        limit: '',
+      },
+      {
+        name: 'myName，我這批order有count貫，總共是money両。怎麼樣?',
+        limit: '',
+      },
       { name: '這些order有count貫，一共是money両。myName有需要嗎?', limit: '' },
-      { name: '我這裡有count貫order，共計是money両。myName要買回去嗎?', limit: '' },
-      { name: '我這裡有一些order總共有count貫，一共是money両。myName要買嗎?', limit: '' },
+      {
+        name: '我這裡有count貫order，共計是money両。myName要買回去嗎?',
+        limit: '',
+      },
+      {
+        name: '我這裡有一些order總共有count貫，一共是money両。myName要買嗎?',
+        limit: '',
+      },
       { name: 'myName，這些order有count貫，共計是money両。如何?', limit: '' },
-      { name: '最近批的order有count貫，一共是money両。myName要不要考慮一下?', limit: '' },
+      {
+        name: '最近批的order有count貫，一共是money両。myName要不要考慮一下?',
+        limit: '',
+      },
     ],
-      // 黑市商人賣貨成功的對話
-      blackMarketeerSellSalesOKTalking: [
-        { name: 'myName，你這次算是撿了便宜，下次可不會這麼容易了。', limit: '' },
-        { name: 'myName，希望你拿著這個東西能夠值回票價', limit: '' },
-        { name: '你真是個會做生意的人，我喜歡和你這樣的客戶交易。', limit: '' },
-        { name: '這可是最後一批了，別讓其他人知道我給你了這麼好的價格。', limit: '' },
-        { name: 'myName，這次的交易算是互惠互利，希望我們今後還能有更多合作。', limit: '' },
-        { name: '你能買到這批貨真是幸運，我可不會輕易把它交給別人。', limit: '' },
-        { name: 'myName，希望我們以後能夠更順利地合作。', limit: '' },
-        { name: 'myName，你是個精明的生意人，能和你合作是我的榮幸。', limit: '' },
-      ],
-      // 黑市商人賣貨失敗的對話
-      blackMarketeerSellSalesNoTalking: [
-        { name: 'myName，你在浪費我時間...', limit: '' },
-        { name: 'myName，我已經給了你最好的價格...', limit: '' },
-        { name: '我的貨物可不是給隨便什麼人的...', limit: '' },
-        { name: '我可不會再等你了，如果你不能買，別人會的...', limit: '' },
-        { name: 'myName，別以為你是唯一想要這個貨物的人，你不買我就賣給別人了...', limit: '' },
-        { name: '不買就趕緊走吧，別浪費我的時間...', limit: '' },
-        { name: 'myName，你要是買不起就別硬湊熱鬧...', limit: '' },
-        { name: 'myName，我可沒有時間跟你耗...', limit: '' },
-      ],
-      // 木工建設確認中對話
-      woodWorkBuildCheckTalking: [
-        { name: '您要build嗎？交給我來完成，money両就好。', limit: '' },
-        { name: '老板，我會為你build，money両可以嗎。', limit: '' },
-        { name: 'build嗎？這是我的專長，money両可以接受嗎。', limit: '' },
-        { name: '想要build嗎？交給我來搞定，只需要money両就可以了。', limit: '' },
-      ],
-      // 木工建設確認OK對話
-      woodWorkBuildOkTalking: [
-        { name: '老板，請等候day天，就放心交給我吧!', limit: '' },
-        { name: '靜候佳音，請等候day天，我會用心為你為你建造的!', limit: '' },
-        { name: '等候day天後完工的消息吧，我將為您用心建造。', limit: '' },
-        { name: '即將開始建造，預計day天能完成，老板等候我的好消息吧!', limit: '' },
-      ],
-      // 木工建設確認No對話
-      woodWorkBuildNoTalking: [
-        { name: '這是在浪費我時間吧...', limit: '' },
-        { name: '確定不再考慮考慮嗎...', limit: '' },
-      ],
+    // 黑市商人賣貨成功的對話
+    blackMarketeerSellSalesOKTalking: [
+      { name: 'myName，你這次算是撿了便宜，下次可不會這麼容易了。', limit: '' },
+      { name: 'myName，希望你拿著這個東西能夠值回票價', limit: '' },
+      { name: '你真是個會做生意的人，我喜歡和你這樣的客戶交易。', limit: '' },
+      {
+        name: '這可是最後一批了，別讓其他人知道我給你了這麼好的價格。',
+        limit: '',
+      },
+      {
+        name: 'myName，這次的交易算是互惠互利，希望我們今後還能有更多合作。',
+        limit: '',
+      },
+      { name: '你能買到這批貨真是幸運，我可不會輕易把它交給別人。', limit: '' },
+      { name: 'myName，希望我們以後能夠更順利地合作。', limit: '' },
+      { name: 'myName，你是個精明的生意人，能和你合作是我的榮幸。', limit: '' },
+    ],
+    // 黑市商人賣貨失敗的對話
+    blackMarketeerSellSalesNoTalking: [
+      { name: 'myName，你在浪費我時間...', limit: '' },
+      { name: 'myName，我已經給了你最好的價格...', limit: '' },
+      { name: '我的貨物可不是給隨便什麼人的...', limit: '' },
+      { name: '我可不會再等你了，如果你不能買，別人會的...', limit: '' },
+      {
+        name: 'myName，別以為你是唯一想要這個貨物的人，你不買我就賣給別人了...',
+        limit: '',
+      },
+      { name: '不買就趕緊走吧，別浪費我的時間...', limit: '' },
+      { name: 'myName，你要是買不起就別硬湊熱鬧...', limit: '' },
+      { name: 'myName，我可沒有時間跟你耗...', limit: '' },
+    ],
+    // 木工建設確認中對話
+    woodWorkBuildCheckTalking: [
+      { name: '您要build嗎？交給我來完成，money両就好。', limit: '' },
+      { name: '老板，我會為你build，money両可以嗎。', limit: '' },
+      { name: 'build嗎？這是我的專長，money両可以接受嗎。', limit: '' },
+      { name: '想要build嗎？交給我來搞定，只需要money両就可以了。', limit: '' },
+    ],
+    // 木工建設確認OK對話
+    woodWorkBuildOkTalking: [
+      { name: '老板，請等候約day天，就放心交給我吧!', limit: '' },
+      { name: '靜候佳音，請等候約day天，我會用心為你為你建造的!', limit: '' },
+      { name: '等候約day天後完工的消息吧，我將為您用心建造。', limit: '' },
+      {
+        name: '即將開始建造，預計約day天能完成，老板等候我的好消息吧!',
+        limit: '',
+      },
+    ],
+    // 木工建設確認No對話
+    woodWorkBuildNoTalking: [
+      { name: '這是在浪費我時間吧...', limit: '' },
+      { name: '確定不再考慮考慮嗎...', limit: '' },
+    ],
+    // 木工建設完成對話
+    woodWorkBuildEndTalking: [
+      { name: '老板，終於您的build完成了!', limit: '' },
+      { name: '這是您訂製的build，請過目。', limit: '' },
+      { name: '您的build已經建好了，試試看。', limit: '' },
+      { name: '老闆，您的build已經準備就緒。', limit: '' },
+      { name: '這是您要求的build，看看滿意嗎？', limit: '' },
+      { name: '老板，您的build已經完工。', limit: '' },
+      { name: '這是您的build，希望能滿足您的需求。', limit: '' },
+      { name: '這是您訂製的build，請過目。', limit: '' },
+      { name: '我們已經完成了您的build，請驗收。', limit: '' },
+    ],
+    // 木工建設完成收到禮金對話
+    woodWorkBuildEndTakeMoneyTalking: [
+      { name: '謝謝老板，你真大方!', limit: '' },
+      { name: '感謝您的賞賜，老板！', limit: '' },
+      { name: '您的厚禮，感激不盡！', limit: '' },
+      { name: '您的大恩大德，我會銘記在心！', limit: '' },
+      { name: '老板您過於謙虛了，我只是盡一分心力而已！', limit: '' },
+      { name: '老板您的慷慨令我感動不已！', limit: '' },
+      { name: '您的好意，我感受到了！', limit: '' },
+      { name: '再次感謝您的大力支持！', limit: '' },
+      { name: '老板您的厚愛，感激不盡！', limit: '' },
+    ],
   }),
   actions: {
     getCheckMoneyTalking(value = 666) {
-      const randomIndex = Math.floor(Math.random() * this.checkMoneyTalking.length);
+      const randomIndex = Math.floor(
+        Math.random() * this.checkMoneyTalking.length
+      );
       const randomItem = this.checkMoneyTalking[randomIndex];
       return randomItem.name.replace('money', value);
     },
     getHireOKTalking() {
       const randomIndex = Math.floor(Math.random() * this.hireOK.length);
       const randomItem = this.hireOK[randomIndex];
-      return randomItem.name
+      return randomItem.name;
     },
     getMeetStaffTalking() {
-      const randomIndex = Math.floor(Math.random() * this.meetStaffTalking.length);
+      const randomIndex = Math.floor(
+        Math.random() * this.meetStaffTalking.length
+      );
       const randomItem = this.meetStaffTalking[randomIndex];
-      return randomItem.name
+      return randomItem.name;
     },
     getTipTalking() {
       const randomIndex = Math.floor(Math.random() * this.tipTalking.length);
       const randomItem = this.tipTalking[randomIndex];
-      return randomItem.name
+      return randomItem.name;
     },
     getAddPayTalking() {
       const randomIndex = Math.floor(Math.random() * this.addPayTalking.length);
       const randomItem = this.addPayTalking[randomIndex];
-      return randomItem.name
+      return randomItem.name;
     },
     getPreFireTalking() {
-      const randomIndex = Math.floor(Math.random() * this.preFireTalking.length);
+      const randomIndex = Math.floor(
+        Math.random() * this.preFireTalking.length
+      );
       const randomItem = this.preFireTalking[randomIndex];
-      return randomItem.name
+      return randomItem.name;
     },
     getYesFireTalking() {
-      const randomIndex = Math.floor(Math.random() * this.yesFireTalking.length);
+      const randomIndex = Math.floor(
+        Math.random() * this.yesFireTalking.length
+      );
       const randomItem = this.yesFireTalking[randomIndex];
-      return randomItem.name
+      return randomItem.name;
     },
     getNoFireTalking() {
       const randomIndex = Math.floor(Math.random() * this.noFireTalking.length);
       const randomItem = this.noFireTalking[randomIndex];
-      return randomItem.name
+      return randomItem.name;
     },
     getUpShopkeeperTalking() {
-      const randomIndex = Math.floor(Math.random() * this.upShopkeeperTalking.length);
+      const randomIndex = Math.floor(
+        Math.random() * this.upShopkeeperTalking.length
+      );
       const randomItem = this.upShopkeeperTalking[randomIndex];
-      return randomItem.name
+      return randomItem.name;
     },
     getIntroducerHelpHireTalking(value) {
-      const randomIndex = Math.floor(Math.random() * this.introducerHelpHireTalking.length);
+      const randomIndex = Math.floor(
+        Math.random() * this.introducerHelpHireTalking.length
+      );
       const randomItem = this.introducerHelpHireTalking[randomIndex];
       return randomItem.name.replace('people', value);
     },
     getIntroducerBuySalesTalking(value) {
-      const randomIndex = Math.floor(Math.random() * this.introducerBuySalesTalking.length);
+      const randomIndex = Math.floor(
+        Math.random() * this.introducerBuySalesTalking.length
+      );
       const randomItem = this.introducerBuySalesTalking[randomIndex];
       return randomItem.name.replace('order', value);
     },
-    getBlackMarketeerSellSalesTalking(count,order,money){
-      const randomIndex = Math.floor(Math.random() * this.blackMarketeerSellSalesTalking.length);
+    getBlackMarketeerSellSalesTalking(count, order, money) {
+      const randomIndex = Math.floor(
+        Math.random() * this.blackMarketeerSellSalesTalking.length
+      );
       const randomItem = this.blackMarketeerSellSalesTalking[randomIndex];
-      return randomItem.name.replace('count', count).replace('order', order).replace('money', money).replace('myName', config().name);
+      return randomItem.name
+        .replace('count', count)
+        .replace('order', order)
+        .replace('money', money)
+        .replace('myName', config().name);
     },
-    getBlackMarketeerSellSalesOKTalking(){
-      const randomIndex = Math.floor(Math.random() * this.blackMarketeerSellSalesOKTalking.length);
+    getBlackMarketeerSellSalesOKTalking() {
+      const randomIndex = Math.floor(
+        Math.random() * this.blackMarketeerSellSalesOKTalking.length
+      );
       const randomItem = this.blackMarketeerSellSalesOKTalking[randomIndex];
       return randomItem.name.replace('myName', config().name);
     },
-    getBlackMarketeerSellSalesNoTalking(){
-      const randomIndex = Math.floor(Math.random() * this.blackMarketeerSellSalesNoTalking.length);
+    getBlackMarketeerSellSalesNoTalking() {
+      const randomIndex = Math.floor(
+        Math.random() * this.blackMarketeerSellSalesNoTalking.length
+      );
       const randomItem = this.blackMarketeerSellSalesNoTalking[randomIndex];
       return randomItem.name.replace('myName', config().name);
     },
-    getWoodWorkBuildCheckTalking(build,money){
-      const randomIndex = Math.floor(Math.random() * this.woodWorkBuildCheckTalking.length);
+    getWoodWorkBuildCheckTalking(build, money) {
+      const randomIndex = Math.floor(
+        Math.random() * this.woodWorkBuildCheckTalking.length
+      );
       const randomItem = this.woodWorkBuildCheckTalking[randomIndex];
       return randomItem.name.replace('build', build).replace('money', money);
     },
-    getWoodWorkBuildOkTalking(day){
-      const randomIndex = Math.floor(Math.random() * this.woodWorkBuildOkTalking.length);
+    getWoodWorkBuildOkTalking(day) {
+      const randomIndex = Math.floor(
+        Math.random() * this.woodWorkBuildOkTalking.length
+      );
       const randomItem = this.woodWorkBuildOkTalking[randomIndex];
-      return randomItem.name.replace('day', day)
+      return randomItem.name.replace('day', day);
     },
-    getWoodWorkBuildNoTalking(){
-      const randomIndex = Math.floor(Math.random() * this.woodWorkBuildNoTalking.length);
+    getWoodWorkBuildNoTalking() {
+      const randomIndex = Math.floor(
+        Math.random() * this.woodWorkBuildNoTalking.length
+      );
       const randomItem = this.woodWorkBuildNoTalking[randomIndex];
-      return randomItem.name
+      return randomItem.name;
     },
-    
+    getWoodWorkBuildEndTalking(build) {
+      const randomIndex = Math.floor(
+        Math.random() * this.woodWorkBuildEndTalking.length
+      );
+      const randomItem = this.woodWorkBuildEndTalking[randomIndex];
+      return randomItem.name.replace('build', build);
+    },
+    getWoodWorkBuildEndTakeMoneyTalking() {
+      const randomIndex = Math.floor(
+        Math.random() * this.woodWorkBuildEndTakeMoneyTalking.length
+      );
+      const randomItem = this.woodWorkBuildEndTakeMoneyTalking[randomIndex];
+      return randomItem.name;
+    },
   },
 });

@@ -22,6 +22,7 @@ const { isPrivateMoney, MaxlimitMoney, MinlimitMoney, title, executeValue } = de
         type: String,
         default: '選擇金額'
     },
+    // 執行項目
     executeValue: {
         type: String,
         default: ''
@@ -199,7 +200,7 @@ input[type=radio]:checked+.check {
 .ChoiceMoney {
     width: 100%;
     height: 100vh;
-    z-index: 900;
+    z-index: 2000;
     position: fixed;
     left: 0;
     top: 0;

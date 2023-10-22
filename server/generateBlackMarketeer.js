@@ -56,7 +56,8 @@ function generateBlackMarketeer(count) {
       headImg: 'blackMarketeer-001.png',
       type: '黑市商人',
       profession: '黑市商人',
-      description: ''
+      description: '',
+      status:''
     };
 
     peopleList.push(body);

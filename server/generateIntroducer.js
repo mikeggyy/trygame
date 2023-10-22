@@ -23,7 +23,8 @@ const generateIntroducer = () => {
       headImg: 'introducer-001.png',
       type: '介紹人',
       profession: '隱居',
-      description: '光兵衛是一位非常慈悲和寬容的人。傳聞他過去無私的幫助陷入困境的人們，不求回報。'
+      description: '光兵衛是一位非常慈悲和寬容的人。傳聞他過去無私的幫助陷入困境的人們，不求回報。',
+      status:''
     },
     {
       id: 2,
@@ -42,7 +43,8 @@ const generateIntroducer = () => {
       headImg: 'introducer-002.png',
       type: '介紹人',
       profession: '文化人',
-      description: ''
+      description: '',
+      status:''
     },
     {
       id: 3,
@@ -61,7 +63,8 @@ const generateIntroducer = () => {
       headImg: 'introducer-003.png',
       type: '介紹人',
       profession: '醫生',
-      description: ''
+      description: '',
+      status:''
     },
     {
       id: 4,
@@ -80,7 +83,8 @@ const generateIntroducer = () => {
       headImg: 'introducer-004.png',
       type: '介紹人',
       profession: '僧侶',
-      description: ''
+      description: '',
+      status:''
     },
     {
       id: 5,
@@ -99,7 +103,8 @@ const generateIntroducer = () => {
       headImg: 'introducer-005.png',
       type: '介紹人',
       profession: '御家人',
-      description: ''
+      description: '',
+      status:''
     },
   ]
   return body;
