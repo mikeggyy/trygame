@@ -12,6 +12,7 @@ import Stock from '@/components/windows/Stock.vue'
 import Audio from '@/components/audio/Audio.vue'
 import MoveMoney from '@/components/navbarFn/MoveMoney.vue';
 import BuySales from '@/components/navbarFn/BuySales.vue';
+import SellSales from '@/components/navbarFn/SellSales.vue';
 import Build from '@/components/navbarFn/Build.vue';
 import BuildEndEvent from '@/components/event/BuildEndEvent.vue';
 
@@ -61,8 +62,13 @@ import { ref } from 'vue';
       <div v-if="popupState().buySales == true">
         <BuySales />
       </div>
+      <!-- 賣出 -->
+      <div v-if="popupState().sellSales == true">
+        <SellSales />
+      </div>
+
       <!-- 建造完成 -->
-      <div v-if="popupState().buildEndItem !=''">
+      <div v-if="popupState().buildEndItem != ''">
         <BuildEndEvent />
       </div>
     </div>

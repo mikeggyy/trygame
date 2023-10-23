@@ -23,6 +23,8 @@ export const popupState = defineStore({
     moveMoney: '',
     // 買入
     buySales: false,
+    // 賣出
+    sellSales: false,
     // 建造完成
     buildEndItem: '',
   }),
@@ -62,6 +64,9 @@ export const popupState = defineStore({
     },
     setBuySales(value) {
       this.buySales = value;
+    },
+    setSellSales(value) {
+      this.sellSales = value;
     },
     setBuildEndItem(item) {
       this.buildEndItem = item;

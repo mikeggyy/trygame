@@ -5,11 +5,11 @@ import { toWork } from '@/unit/toWork.js';
 const navBarStore = navBar();
 const navList = ref(navBarStore.navList);
 // 用於追蹤當前啟用的菜單項索引
-const activeIndex = ref(null); 
+const activeIndex = ref(null);
 const subIndex = ref(null);
 // 設定當前啟用的菜單項索引為傳入的 index
 const setActiveIndex = (index) => {
-  activeIndex.value = index; 
+  activeIndex.value = index;
 }
 // 重設當前啟用的菜單項索引為 null，關閉所有子菜單
 const clearActiveIndex = () => {
@@ -17,11 +17,11 @@ const clearActiveIndex = () => {
 }
 // 設定當前啟用的菜單項索引為傳入的 index
 const setSubIndex = (index) => {
-  subIndex.value = index; 
+  subIndex.value = index;
 }
 // 重設當前啟用的菜單項索引為 null，關閉所有子菜單
 const clearSubIndex = (index) => {
-  subIndex.value = null; 
+  subIndex.value = null;
 }
 // 第一選單
 const subItemHandle = (item) => {
@@ -38,6 +38,9 @@ const subItemHandle = (item) => {
       break;
     case '買入':
       popupState().setBuySales(true)
+      break;
+    case '賣出':
+      popupState().setSellSales(true)
       break;
     case '傳喚':
       popupState().setMeetStaffType(item.name)

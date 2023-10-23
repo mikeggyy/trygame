@@ -138,6 +138,36 @@ export const talking = defineStore({
         limit: '',
       },
     ],
+    // 黑市商人買貨的對話
+    blackMarketeerBuySalesTalking: [
+      { name: '跟你買count貫order，總共money両。myName你接受嗎?', limit: '' },
+      {
+        name: '聽說你有count貫order，算你money両。myName可以的話賣我?',
+        limit: '',
+      },
+      {
+        name: '聽說你這邊order有count貫，一共money両跟你收。myName要不要賣?',
+        limit: '',
+      },
+      {
+        name: 'myName，聽說你有批order有count貫，money両賣我。怎麼樣?',
+        limit: '',
+      },
+      { name: '這些order一共有count貫，money両我買了。myName如何?', limit: '' },
+      {
+        name: 'count貫order，money両跟你收。myName要賣給我嗎?',
+        limit: '',
+      },
+      {
+        name: '聽說你這裡有一些order總共有count貫，money両跟你收。myName要賣嗎?',
+        limit: '',
+      },
+      { name: 'myName，這些order有count貫，money両跟你收購。如何?', limit: '' },
+      {
+        name: '聽說你有order共count貫，money両賣我如何。myName怎麼樣?',
+        limit: '',
+      },
+    ],
     // 黑市商人賣貨成功的對話
     blackMarketeerSellSalesOKTalking: [
       { name: 'myName，你這次算是撿了便宜，下次可不會這麼容易了。', limit: '' },
@@ -214,6 +244,18 @@ export const talking = defineStore({
       { name: '您的好意，我感受到了！', limit: '' },
       { name: '再次感謝您的大力支持！', limit: '' },
       { name: '老板您的厚愛，感激不盡！', limit: '' },
+    ],
+    // 木工船隻建設完成要求取名
+    woodWorkBuildEndShipTalking: [
+      { name: '您的船隻已經完成了，幫船取個你喜歡的名字吧', limit: '' },
+      { name: '這是您訂製的船隻，幫船取個你喜歡的名字吧', limit: '' },
+    ],
+    // 船隻取名完後木工對話
+    woodWorkBuildEndGiveNameTalking: [
+      { name: '叫「shipName」嗎，真是個好名字！', limit: '' },
+      { name: '叫「shipName」嗎？這個名字真是獨特！', limit: '' },
+      { name: '哇，「shipName」，好名字！', limit: '' },
+      { name: '「shipName」，這個名字好適合這艘船！', limit: '' },
     ],
   }),
   actions: {
@@ -297,6 +339,17 @@ export const talking = defineStore({
         .replace('money', money)
         .replace('myName', config().name);
     },
+    getBlackMarketeerBuySalesTalking(count, order, money) {
+      const randomIndex = Math.floor(
+        Math.random() * this.blackMarketeerBuySalesTalking.length
+      );
+      const randomItem = this.blackMarketeerBuySalesTalking[randomIndex];
+      return randomItem.name
+        .replace('count', count)
+        .replace('order', order)
+        .replace('money', money)
+        .replace('myName', config().name);
+    },
     getBlackMarketeerSellSalesOKTalking() {
       const randomIndex = Math.floor(
         Math.random() * this.blackMarketeerSellSalesOKTalking.length
@@ -346,5 +399,20 @@ export const talking = defineStore({
       const randomItem = this.woodWorkBuildEndTakeMoneyTalking[randomIndex];
       return randomItem.name;
     },
+    getWoodWorkBuildEndShipTalking() {
+      const randomIndex = Math.floor(
+        Math.random() * this.woodWorkBuildEndShipTalking.length
+      );
+      const randomItem = this.woodWorkBuildEndShipTalking[randomIndex];
+      return randomItem.name;
+    },
+    getWoodWorkBuildEndGiveNameTalking(shipName) {
+      const randomIndex = Math.floor(
+        Math.random() * this.woodWorkBuildEndGiveNameTalking.length
+      );
+      const randomItem = this.woodWorkBuildEndGiveNameTalking[randomIndex];
+      return randomItem.name.replace('shipName', shipName);
+    },
+
   },
 });

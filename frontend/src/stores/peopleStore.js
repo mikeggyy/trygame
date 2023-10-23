@@ -50,8 +50,14 @@ export const people = defineStore({
       const peopleListIndex = this.peopleList.findIndex(
         (item) => item.name == name
       );
-      this.peopleList[peopleListIndex].howMuchLike =
-        this.peopleList[peopleListIndex].howMuchLike + value;
+      if (this.peopleList[peopleListIndex].howMuchLike + value > 1000) {
+        this.peopleList[peopleListIndex].howMuchLike = 1000
+      } else if (this.peopleList[peopleListIndex].howMuchLike + value < 0) {
+        this.peopleList[peopleListIndex].howMuchLike = 0
+      } else {
+        this.peopleList[peopleListIndex].howMuchLike =
+          this.peopleList[peopleListIndex].howMuchLike + value;
+      }
     },
     // 設定某人狀態
     setPeopleListStatus(name, value) {

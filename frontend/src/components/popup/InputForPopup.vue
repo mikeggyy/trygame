@@ -1,15 +1,16 @@
 <script setup>
 import { ref } from 'vue';
 import { config } from '@/stores';
-const inputName = ref(config().name);
+
+const inputText = ref();
 const emits = defineEmits();
 const tipsError = ref(false)
 const checkName = () => {
   // 使用正则表达式验证输入，只包含中文和英文，且长度不超过5个字符
   const regex = /^[a-zA-Z\u4e00-\u9fa5]{1,5}$/;
-  if (regex.test(inputName.value)) {
+  if (regex.test(inputText.value)) {
     // 符合条件，触发事件
-    emits('ok', inputName);
+    emits('ok', inputText);
   } else {
     tipsError.value = true
     // 不符合条件，进行处理（比如提示用户输入不合法）
@@ -21,7 +22,7 @@ const checkName = () => {
 <template>
   <div class="InputForPopup">
     <div class="zone__input">
-      <input maxlength="5" type="text" v-model.trim="inputName">
+      <input maxlength="5" type="text" v-model.trim="inputText">
       <div class="tips" :class="tipsError == true ? 'red' : 'blue'">只能輸入中文和英文，且長度不超過5個字符</div>
     </div>
     <div class="zone__decide">

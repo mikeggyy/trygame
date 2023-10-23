@@ -39,9 +39,20 @@ export const navBar = defineStore({
               { name: '設定停止日', fn: '工作', value: 'setStop', show: true },
             ],
           },
-          { name: '外出', show: true },
+          {
+            name: '外出', list2: [
+              { name: '幕府重臣的府邸', fn: '幕府重臣的府邸', value: 1, show: true },
+              { name: '諸蕃江戶府邸', fn: '諸蕃江戶府邸', value: 2, show: true },
+              { name: '卸任者的家', fn: '卸任者的家', value: 3, show: true },
+              { name: '出外旅行', fn: '出外旅行', value: 4, show: true },
+              { name: '賭場', fn: '賭場', value: 5, show: true },
+              { name: '吉原', fn: '吉原', value: 6, show: true },
+              { name: '觀看浮世繪', fn: '觀看浮世繪', value: 7, show: true },
+              { name: '去小老婆家', fn: '去小老婆家', value: 8, show: true },
+            ], show: true
+          },
           { name: '買入', fn: '買入', show: true },
-          { name: '賣掉', show: true },
+          { name: '賣出', fn: '賣出', show: true },
           {
             name: '建造',
             show: true,

@@ -110,11 +110,11 @@ export const config = defineStore({
     },
     // 倉庫數量
     warehouseSize(state) {
-      return state.warehouseList.filter((item) => item.name === '倉庫').length;
+      return state.warehouseList.length;
     },
     // 船隻數量
     shipSize(state) {
-      return state.shipList.filter((item) => item.type === '船隻').length;
+      return state.shipList.length;
     },
     // 倉庫總容量
     totalWarehouse(state) {
@@ -266,5 +266,8 @@ export const config = defineStore({
         buildAbility: buildAbility,
       });
     },
+    setShipList(item) {
+      this.shipList.push(item)
+    }
   },
 });
