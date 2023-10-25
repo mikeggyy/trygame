@@ -6,6 +6,7 @@ import vue from '@vitejs/plugin-vue'
 // https://vitejs.dev/config/
 export default defineConfig({
   publicPath: process.env.VITE_APP_BASE_URL,
+  base: './', // 设置根路径
   plugins: [
     vue(),
   ],
