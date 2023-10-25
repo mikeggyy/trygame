@@ -11,6 +11,7 @@ const generateIntroducer = require('./generateIntroducer.js');
 const generateShipMan = require('./generateShipMan.js');
 const generateBlackMarketeer = require('./generateBlackMarketeer.js');
 const generateWoodWorkMan = require('./generateWoodWorkMan.js');
+const generateShogun = require('./generateShogun.js');
 
 app.get("/api/generateAllData", async (req, res) => {
   try {
@@ -24,7 +25,8 @@ app.get("/api/generateAllData", async (req, res) => {
     const shipMan = await generateShipMan(shipManCount);
     const blackMarketeer = await generateBlackMarketeer(10);
     const woodWorkMan = await generateWoodWorkMan(8);
-    const allData = [...introducers, ...laborers, ...bodyguards, ...shipMan,...blackMarketeer,...woodWorkMan];
+    const shogun = await generateShogun(40);
+    const allData = [...introducers, ...laborers, ...bodyguards, ...shipMan, ...blackMarketeer, ...woodWorkMan, ...shogun];
     res.json(allData);
   } catch (err) {
     // 處理錯誤

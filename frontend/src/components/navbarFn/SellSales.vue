@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
 import SelectForPopup from '@/components/popup/SelectForPopup.vue';
 import TitleForPopup from '@/components/popup/TitleForPopup.vue';
 import ClickSpaceForPopup from '@/components/popup/ClickSpaceForPopup.vue';

@@ -9,7 +9,9 @@ const placeName = (name) => {
     case 'home-001':
       return '自宅'
     case 'room-001':
-      return '黑市商人宅邸'
+      return '自宅宅邸'
+    case 'shogunRoom-001':
+      return '幕府重臣宅邸'
   }
 }
 

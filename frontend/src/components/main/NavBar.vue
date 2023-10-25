@@ -54,6 +54,9 @@ const subItemHandle2 = (item) => {
     case '工作':
       toWork(item.value)
       break;
+    case '幕府重臣的府邸':
+      popupState().setShogun(true);
+      break;
     case '建造':
       popupState().setBuildType(item.name);
       break;

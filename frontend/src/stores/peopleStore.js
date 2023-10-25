@@ -64,9 +64,14 @@ export const people = defineStore({
       const peopleListIndex = this.peopleList.findIndex(
         (item) => item.name == name
       );
-      this.peopleList[peopleListIndex].status = this.peopleList[
-        peopleListIndex
-      ].status = value;
+      this.peopleList[peopleListIndex].status = value;
+    },
+    // 設定某人狀態
+    setPeopleListDoYouKnow(name, value) {
+      const peopleListIndex = this.peopleList.findIndex(
+        (item) => item.name == name
+      );
+      this.peopleList[peopleListIndex].doYouKnow = true;
     },
   },
 });

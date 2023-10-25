@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
 import { config, popupState, people, talking } from '@/stores';
 import TalkForPopup from '@/components/popup/TalkForPopup.vue';
 import YesOrNoForPopup from '@/components/popup/YesOrNoForPopup.vue';

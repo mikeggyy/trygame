@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import { config } from '@/stores';
 
-const inputText = ref();
+const inputText = ref('江戶');
 const emits = defineEmits();
 const tipsError = ref(false)
 const checkName = () => {

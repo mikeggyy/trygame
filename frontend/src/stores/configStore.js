@@ -8,6 +8,8 @@ export const config = defineStore({
     age: 20,
     // 創業幾年
     afterYears: 0,
+    // 聲望
+    fame: 0,
     // 倉庫列表
     warehouseList: [{ name: '倉庫', size: 100000 }],
     // 船隻列表
@@ -266,8 +268,13 @@ export const config = defineStore({
         buildAbility: buildAbility,
       });
     },
+    // 新增船隻
     setShipList(item) {
       this.shipList.push(item)
+    },
+    // 設定聲望
+    setFame(value) {
+      this.fame = this.fame + value
     }
   },
 });

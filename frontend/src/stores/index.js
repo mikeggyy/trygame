@@ -10,5 +10,4 @@ import { people } from './peopleStore';
 import { port } from './portStore';
 import { select } from './selectStore';
 import { talking } from './talkingStore';
-
 export { config, navBar, profession, popupState, product, people, port, select, talking };

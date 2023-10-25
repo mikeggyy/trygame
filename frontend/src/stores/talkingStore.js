@@ -257,6 +257,99 @@ export const talking = defineStore({
       { name: '哇，「shipName」，好名字！', limit: '' },
       { name: '「shipName」，這個名字好適合這艘船！', limit: '' },
     ],
+    // 介紹人幫忙寫介紹信
+    introducerHelpsWriteTheLetterTalking: [
+      { name: '是否需要我為您寫一封介紹信呢？', limit: '' },
+      { name: '是否需要我為您準備一封介紹信？', limit: '' },
+      { name: '我可以為您起草一封介紹信，這樣您就可以順利進行拜訪。', limit: '' },
+      { name: '如果您希望，我可以替您寫一份介紹信。', limit: '' },
+      { name: '是否需要我協助您準備一份正式的介紹信？', limit: '' },
+      { name: '如果您同意，我可以為您撰寫一封精心製作的介紹信。', limit: '' },
+      { name: '一封介紹信可能會為您的拜訪增添更多的價值。您希望我幫您寫嗎？', limit: '' },
+      { name: '我很樂意為您寫一封介紹信，以確保您的拜訪能夠順利進行。您認為需要這樣的協助嗎？', limit: '' },
+    ],
+    // 答應介紹人幫忙寫介紹信
+    introducerHelpsWriteTheLetterYesTalking: [
+      { name: '我將立即為您準備一封得體的介紹信，相信這將對您的拜訪非常有幫助。', limit: '' },
+      { name: '我將以最好的方式為您寫一封介紹信，讓您的拜訪充滿誠意和尊重。', limit: '' },
+      { name: '一封精心製作的介紹信將為您的拜訪增色不少。我將竭盡所能為您提供最好的幫助。', limit: '' },
+      { name: '這封介紹信將展現您的誠意，相信將軍一定會對您的拜訪印象深刻。', limit: '' },
+      { name: '請放心，我將確保這封介紹信既表達了您的誠意，讓您的拜訪順利進行。', limit: '' },
+      { name: '我將為您寫一封既正式又親切的介紹信，這將是您拜訪將軍時的得力助手。', limit: '' },
+      { name: '我將為您設計一封引人注目的介紹信，相信這將是個好的開端。', limit: '' },
+      { name: '我很樂意為您寫一封介紹信，以確保您的拜訪能夠順利進行。您認為需要這樣的協助嗎？', limit: '' },
+    ],
+    // 將軍剛見面會對我說的話
+    meetShogunTalking: [
+      { name: 'myName。歡迎來到我的府邸。', limit: '' },
+      { name: '哦，myName，有什麼要談的嗎。', limit: '' },
+      { name: 'myName，你有什麼想談的嗎？', limit: '' },
+      { name: '好，myName，你說吧，我聽著。', limit: '' },
+      { name: 'myName，你有什麼想談的嗎？', limit: '' },
+    ],
+    // 將軍收到介紹信後對我說的話
+    shogunTakeLetterTalking: [
+      { name: '哦，是介紹信上的那位introducerName介紹你來的嗎？', limit: '' },
+      { name: '這信上introducerName可是大加讚賞你，不知你來意何為？', limit: '' },
+      { name: '我收到了你的介紹信，看來你是個不簡單的人物。', limit: '' },
+      { name: 'introducerName介紹信上說你有趣，但我對你的興趣還未開始。', limit: '' },
+    ],
+    // 將軍問事情
+    shogunAskSomeThingTalking: [
+      { name: '出人頭地可真不容易呢，總是要克服各種困難。', limit: '' },
+      { name: '每個人都想往上爬啊？可惜路總是艱辛的。', limit: '' },
+      { name: '在這個時代，競爭非常激烈，不是嗎？', limit: '' },
+      { name: '你們的世界真是複雜，不像我，只需操心國家大事。', limit: '' },
+      { name: '我也曾經夢想過成功，但向上的道路同樣充滿挑戰。', limit: '' },
+      { name: '有時候，我也想遠離塵囂，過個平靜的生活。', limit: '' },
+      { name: '大家都是為了更好的生活努力。', limit: '' },
+      { name: '但願我們的努力都能換來理想的結果。', limit: '' },
+      { name: '在這個時代，每個人都在為了夢想而努力。', limit: '' },
+    ],
+    // 將軍拒絕收禮物
+    shogunRejectGiftTalking: [
+      { name: '這是gift吧，但我不能收啊，這份心意我心領了。', limit: '' },
+      { name: '這gift太珍貴了，我不敢接受。但感謝你的心意。', limit: '' },
+      { name: '這gift可是您的一番心意，我實在難以收下。', limit: '' },
+      { name: '雖然我不能收下這份gift，但您的誠意我感受到了。', limit: '' },
+      { name: '這份gift，我不敢收。但您的厚意我心領了。', limit: '' },
+      { name: '我不能接受這份gift，但您的心意我心領了。', limit: '' },
+      { name: '這份gift太過於奢華，我無法收下。但您的心意我非常感激。', limit: '' },
+      { name: '這gift我不忍心收下。但您的心意我知道了。', limit: '' },
+      { name: '我不能接受這份gift，但您的誠意我永遠記在心裡。', limit: '' },
+      { name: '這份gift我實在難以收下，但謝謝您的慷慨。', limit: '' },
+    ],
+    // 將軍收禮物
+    shogunAcceptGiftTalking: [
+      { name: 'myName，謝謝你啦，魚幫水水幫魚。', limit: '' },
+      { name: 'myName，你的誠意感動了我，我決定收下這份禮物。', limit: '' },
+      { name: 'myName，我明白了，我決定接受你的心意。', limit: '' },
+      { name: 'myName，這禮物，我收下了。', limit: '' },
+      { name: 'myName，我很感激你的心意，我接受了。', limit: '' },
+      { name: 'myName，你的堅持讓我改變了主意，我收下了。', limit: '' },
+      { name: 'myName，我不想讓你難過，我會收下這份禮物。', limit: '' },
+      { name: 'myName，你的禮物真誠摯，我決定接受。', limit: '' },
+      { name: '好吧，myName，既然你這麼誠心，我就收下了。', limit: '' },
+    ],
+    // 對將軍提出捐贈
+    shogunMakeDonatTalking: [
+      { name: '哦，myName你願意捐贈嗎？那麼，你打算捐贈多少呢？', limit: '' },
+      { name: 'myName你真是慷慨。請問你計劃捐贈多少呢？', limit: '' },
+      { name: '嗯，我對你的慷慨深感欣賞。你的捐贈金額是？', limit: '' },
+      { name: '真是一位令人敬佩的人。請問，你要捐贈多少呢？', limit: '' },
+      { name: '你的慷慨令我感動。請問，你打算捐贈多少呢？', limit: '' }
+    ],
+    // 將軍收到捐贈
+    shogunGetDonatTalking: [
+      { name: '噢，我接受了你的慷慨捐贈。myName你的支持將有助於我們的使命。', limit: '' },
+      { name: '謝謝myName你的支持，這筆捐贈將用於國家的發展。', limit: '' },
+      { name: '收到你的捐贈了，myName你的慷慨令人感動。', limit: '' },
+      { name: 'myName你的贈是對國家的重大貢獻，我感到非常幸運。', limit: '' },
+      { name: '我們將以你的名義紀念這份慷慨。myName感謝你的支持。', limit: '' },
+      { name: '這份捐贈將幫助我們實現許多重要的計劃。myName謝謝你的支持與信任。', limit: '' },
+      { name: '你的慷慨將被永遠銘記在我們的心中。myName謝謝你的捐贈。', limit: '' },
+      { name: '你的慷慨將促使我們取得更大的成就。myName謝謝你的貢獻。', limit: '' },
+    ],
   }),
   actions: {
     getCheckMoneyTalking(value = 666) {
@@ -412,6 +505,69 @@ export const talking = defineStore({
       );
       const randomItem = this.woodWorkBuildEndGiveNameTalking[randomIndex];
       return randomItem.name.replace('shipName', shipName);
+    },
+    getIntroducerHelpsWriteTheLetterTalking() {
+      const randomIndex = Math.floor(
+        Math.random() * this.introducerHelpsWriteTheLetterTalking.length
+      );
+      const randomItem = this.introducerHelpsWriteTheLetterTalking[randomIndex];
+      return randomItem.name;
+    },
+    getIntroducerHelpsWriteTheLetterYesTalking() {
+      const randomIndex = Math.floor(
+        Math.random() * this.introducerHelpsWriteTheLetterYesTalking.length
+      );
+      const randomItem = this.introducerHelpsWriteTheLetterYesTalking[randomIndex];
+      return randomItem.name;
+    },
+    getMeetShogunTalking() {
+      const randomIndex = Math.floor(
+        Math.random() * this.meetShogunTalking.length
+      );
+      const randomItem = this.meetShogunTalking[randomIndex];
+      return randomItem.name.replace('myName', config().name);
+    },
+    getShogunTakeLetterTalking() {
+      const randomIndex = Math.floor(
+        Math.random() * this.shogunTakeLetterTalking.length
+      );
+      const randomItem = this.shogunTakeLetterTalking[randomIndex];
+      return randomItem.name.replace('introducerName', config().introducerItem.name);
+    },
+    getShogunAskSomeThingTalking() {
+      const randomIndex = Math.floor(
+        Math.random() * this.shogunAskSomeThingTalking.length
+      );
+      const randomItem = this.shogunAskSomeThingTalking[randomIndex];
+      return randomItem.name
+    },
+    getShogunRejectGiftTalking(gift) {
+      const randomIndex = Math.floor(
+        Math.random() * this.shogunRejectGiftTalking.length
+      );
+      const randomItem = this.shogunRejectGiftTalking[randomIndex];
+      return randomItem.name.replace('gift', gift);
+    },
+    getShogunAcceptGiftTalking() {
+      const randomIndex = Math.floor(
+        Math.random() * this.shogunAcceptGiftTalking.length
+      );
+      const randomItem = this.shogunAcceptGiftTalking[randomIndex];
+      return randomItem.name.replace('myName', config().name);;
+    },
+    getShogunMakeDonatTalking() {
+      const randomIndex = Math.floor(
+        Math.random() * this.shogunMakeDonatTalking.length
+      );
+      const randomItem = this.shogunMakeDonatTalking[randomIndex];
+      return randomItem.name.replace('myName', config().name);;
+    },
+    getShogunGetDonatTalking() {
+      const randomIndex = Math.floor(
+        Math.random() * this.shogunGetDonatTalking.length
+      );
+      const randomItem = this.shogunGetDonatTalking[randomIndex];
+      return randomItem.name.replace('myName', config().name);;
     },
 
   },

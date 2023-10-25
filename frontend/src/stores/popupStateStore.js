@@ -27,6 +27,8 @@ export const popupState = defineStore({
     sellSales: false,
     // 建造完成
     buildEndItem: '',
+    // 幕府重臣的府邸
+    shogun: false
   }),
   actions: {
     setNewGame(value) {
@@ -70,6 +72,9 @@ export const popupState = defineStore({
     },
     setBuildEndItem(item) {
       this.buildEndItem = item;
+    },
+    setShogun(value) {
+      this.shogun = value;
     },
   },
 });
